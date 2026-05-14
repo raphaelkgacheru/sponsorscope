@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SponsorScope — Know Before You Apply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #00b87a;
+  --green-light: #00c896;
+  --blue: #0077ff;
+  --gradient: linear-gradient(135deg, #00c896, #0077ff);
+  --bg: #f8f9fc;
+  --white: #ffffff;
+  --surface: #f5f5f8;
+  --border: rgba(0,0,0,0.06);
+  --text-primary: #111;
+  --text-secondary: #444;
+  --text-muted: #888;
+  --text-hint: #aaa;
+  --green-bg: #e6faf3;
+  --green-text: #00956a;
+  --amber-bg: #fff8e6;
+  --amber-text: #b07800;
+  --font: 'Nunito', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  height: 64px;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+
+.nav-logo-img {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.nav-logo-name {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.nav-logo-name span { color: var(--green); }
+
+.nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 700; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-cta {
+  background: var(--gradient) !important;
+  color: white !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.88 !important; }
+
+/* HERO */
+.hero {
+  padding: 6rem 4rem 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--green-bg);
+  border: 1px solid rgba(0,185,120,0.2);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--green-text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.4; transform:scale(0.7); }
+}
+
+.hero-h1 {
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.hero-h1 .highlight {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2.25rem;
+  font-weight: 500;
+  max-width: 460px;
+}
+
+.hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gradient);
+  color: white;
+  text-decoration: none;
+  padding: 0.9rem 1.75rem;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  transition: all 0.2s;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 16px rgba(0,200,150,0.25);
+}
+
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,200,150,0.3); }
+
+.btn-ghost {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0.9rem 1rem;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--text-primary); }
+
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.75rem;
+  padding-top: 2.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.stat-num {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* EXTENSION MOCKUP */
+.hero-visual { position: relative; display: flex; justify-content: center; }
+
+.ext-wrap {
+  position: relative;
+  width: 340px;
+}
+
+.ext-frame {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
+  position: relative;
+  z-index: 2;
+}
+
+.ext-header {
+  background: white;
+  padding: 13px 16px 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.ext-logo-row { display: flex; align-items: center; gap: 9px; }
+
+.ext-logo-icon {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.ext-logo-name { font-size: 15px; font-weight: 900; color: var(--text-primary); line-height: 1.1; }
+.ext-logo-name span { color: var(--green); }
+.ext-logo-tag { font-size: 9px; font-weight: 700; color: var(--text-hint); letter-spacing: 0.03em; }
+
+.ext-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  padding: 0 14px;
+  background: white;
+}
+
+.ext-tab {
+  flex: 1;
+  padding: 10px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-hint);
+  text-align: center;
+  border-bottom: 2px solid transparent;
+}
+
+.ext-tab.active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+.ext-body { padding: 12px 14px; background: var(--bg); }
+
+.ext-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 13px;
+  margin-bottom: 8px;
+}
+
+.ext-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.ext-company { font-size: 13px; font-weight: 800; color: var(--text-primary); }
+.ext-role { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.badge-a { background: var(--green-bg); color: var(--green-text); border: 1px solid rgba(0,185,120,0.2); }
+.badge-b { background: var(--amber-bg); color: var(--amber-text); border: 1px solid rgba(240,184,0,0.3); }
+.badge-trading { background: var(--green-bg); color: var(--green-text); font-size: 9px; padding: 2px 7px; }
+
+.ext-pills { display: flex; gap: 5px; flex-wrap: wrap; margin: 7px 0; }
+
+.pill {
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 700;
+  background: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.ext-salary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #e8faf3, #dff3ff);
+  border: 1px solid rgba(0,185,120,0.2);
+  border-radius: 8px;
+  padding: 7px 9px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green-text);
+}
+
+.float-chip {
+  position: absolute;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 9px 13px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.float-chip-1 { top: -14px; right: -55px; animation: float 3s ease-in-out infinite; }
+.float-chip-2 { bottom: 24px; left: -65px; animation: float 3s ease-in-out 1.5s infinite; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.float-label { font-size: 9px; font-weight: 800; color: var(--text-hint); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
+.float-val { font-size: 12px; font-weight: 800; color: var(--green); }
+
+/* SECTIONS */
+.section {
+  padding: 6rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.section-h2 {
+  font-size: clamp(1.9rem, 3vw, 2.75rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+/* FEATURES */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+
+.feat-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.feat-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.feat-icon {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, #e8faf3, #dff3ff);
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.1rem;
+}
+
+.feat-icon svg { width: 22px; height: 22px; stroke: var(--green); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.feat-title { font-size: 14px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px; }
+.feat-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 600; }
+
+/* DIVIDER SECTION */
+.divider-section {
+  background: white;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 6rem 4rem;
+}
+
+.divider-inner { max-width: 1200px; margin: 0 auto; }
+
+/* HOW IT WORKS */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 3.5rem;
+  position: relative;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: calc(16.666% + 24px);
+  right: calc(16.666% + 24px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--green-light), rgba(0,200,150,0.15));
+}
+
+.step-num {
+  width: 48px; height: 48px;
+  background: var(--gradient);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.step-title { font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
+.step-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 600; }
+
+/* PRICING */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+
+.pricing-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.25rem;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pricing-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+.pricing-card.featured {
+  border: 2px solid var(--green);
+  box-shadow: 0 8px 32px rgba(0,200,150,0.12);
+}
+
+.featured-badge {
+  position: absolute;
+  top: -13px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient);
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pricing-plan { font-size: 10px; font-weight: 800; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
+
+.pricing-price { display: flex; align-items: baseline; gap: 3px; margin-bottom: 6px; }
+.price-sym { font-size: 1.4rem; font-weight: 700; color: var(--text-secondary); }
+.price-amt { font-size: 3.2rem; font-weight: 900; color: var(--text-primary); line-height: 1; letter-spacing: -0.04em; }
+.price-per { font-size: 13px; color: var(--text-muted); font-weight: 700; align-self: flex-end; margin-bottom: 4px; }
+
+.price-note { font-size: 12px; color: var(--text-muted); font-weight: 700; margin-bottom: 1.75rem; min-height: 18px; }
+.price-note .highlight { color: var(--green); }
+
+.pricing-divider { height: 1px; background: var(--border); margin-bottom: 1.5rem; }
+
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.check {
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  background: var(--green-bg);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+
+.check svg { width: 10px; height: 10px; stroke: var(--green); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+.btn-plan {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.85rem;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font);
+}
+
+.btn-plan-outline {
+  background: white;
+  border: 1.5px solid #e5e5ea;
+  color: var(--text-secondary);
+}
+.btn-plan-outline:hover { border-color: var(--green); color: var(--green); }
+
+.btn-plan-gradient {
+  background: var(--gradient);
+  color: white;
+  box-shadow: 0 4px 14px rgba(0,200,150,0.25);
+}
+.btn-plan-gradient:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* FAQ */
+.faq-section { background: white; border-top: 1px solid var(--border); padding: 6rem 4rem; }
+.faq-inner { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+.faq-q { font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 0.6rem; }
+.faq-a { font-size: 14px; color: var(--text-muted); line-height: 1.7; font-weight: 600; }
+
+/* CTA BANNER */
+.cta-section {
+  padding: 7rem 4rem;
+  text-align: center;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-blob {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(0,200,150,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-inner { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; }
+
+.cta-h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--text-primary);
+  margin-bottom: 1.1rem;
+  letter-spacing: -0.03em;
+}
+
+.cta-sub { font-size: 15px; color: var(--text-secondary); margin-bottom: 2.25rem; font-weight: 500; line-height: 1.7; }
+
+/* FOOTER */
+footer {
+  padding: 2.5rem 4rem;
+  border-top: 1px solid var(--border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-left { font-size: 13px; color: var(--text-muted); font-weight: 700; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; font-weight: 700; transition: color 0.2s; }
+.footer-links a:hover { color: var(--green); }
+
+/* ANIMATIONS */
+.fade-in { opacity: 0; transform: translateY(18px); animation: fadeIn 0.65s ease forwards; }
+@keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+.d1 { animation-delay: 0.05s; }
+.d2 { animation-delay: 0.15s; }
+.d3 { animation-delay: 0.28s; }
+.d4 { animation-delay: 0.42s; }
+.d5 { animation-delay: 0.56s; }
+
+@media (max-width: 960px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+  .float-chip { display: none; }
+  .section { padding: 4.5rem 1.5rem; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .divider-section { padding: 4.5rem 1.5rem; }
+  .steps { grid-template-columns: 1fr; }
+  .steps::before { display: none; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .faq-section { padding: 4.5rem 1.5rem; }
+  .cta-section { padding: 5rem 1.5rem; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1.25rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="data:image/png;base64,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" class="nav-logo-img" alt="SponsorScope">
+    <span class="nav-logo-name">Sponsor<span>Scope</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://chromewebstore.google.com" class="nav-cta">Add to Chrome</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="background:white; border-bottom:1px solid var(--border);">
+<div class="hero">
+  <div class="fade-in d1">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-dot"></span>
+      120,000+ UK Visa Sponsors
+    </div>
+    <h1 class="hero-h1">
+      Know before<br>you <span class="highlight">apply.</span>
+    </h1>
+    <p class="hero-sub">
+      SponsorScope tells you instantly if a company can legally hire you on a UK work visa — right on the job listing, before you spend a minute on an application.
+    </p>
+    <div class="hero-actions">
+      <a href="https://chromewebstore.google.com" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        Add to Chrome
+      </a>
+      <a href="#how" class="btn-ghost">See how it works →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">120k+</span>
+        <span class="stat-label">Sponsors tracked</span>
+      </div>
+      <div>
+        <span class="stat-num">15+</span>
+        <span class="stat-label">Job sites</span>
+      </div>
+      <div>
+        <span class="stat-num">Weekly</span>
+        <span class="stat-label">Data updates</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Extension mockup -->
+  <div class="hero-visual fade-in d3">
+    <div class="ext-wrap">
+      <div class="float-chip float-chip-1">
+        <div class="float-label">Companies House</div>
+        <div class="float-val">✓ Actively Trading</div>
+      </div>
+
+      <div class="ext-frame">
+        <div class="ext-header">
+          <div class="ext-logo-row">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAINklEQVR4nO2cd4xURRzHfz/FrrEQjQUVC1WkiIiAQgiEcpzHHUgMCUg9uoo1VAlyFBVRpHMcRYyASDN00aMoRAXBRrH3jpDYW37+8XaX3dvd2zfzpr43n2QSwu3M7/fm+32/mTf3bgEckQaljLpnNkkZN+o0GyJcL3ED7p7jRFdJ88FCtAs+yO65TnidNB8USEP+zq/Nc8KbRIuBXFryGeDV+U58E7llALOebB2c8HbAYAT/BthV6sS3iVuLfWnrzwA7FzjxbaRl/5z65jbAzjInvs207FepxpUbYMdCJ34YaNU3q87ZDbBjkRM/TLTqk1HrKlk7OPkjQeYKUL7YyR9GWvdO0zvdAOVLnPhhpnWvFM3TlwCS8wtCh5mkqv3yUnf3R4E2PRO6n6QzD4d+TlSAbc+6uz9KtO2BAMl7ALf2R5KkTaAzQBTxVN+6zJX/KNKuO8YqgLv7o4pnAHf/R5aYAVwFiCrWLwHUvpvvz+KWlRIzsRPrKgB1uJ2/bwWz4OYXgqZjPdYYgDp2FT9mzEy4aZXwsW0h+/sAhiBD+GwxomgEYysA5XVRHzNuhI2rlcfWReyXQWhU0yF+Ml58/fMgvxlYAahToe4UAACA8ooAN6zVnYZ0jDEA5XfWnUIacTPi+nV6E5GIEUuAieIn4+Wnu1zLWQI8A5C+RvkFvoXQCeUXaJ0nKQ0MWgKsIITzpPUomAryhYyDL65XEosKbvMVyya0VQDq3ImnW3HF/8B1G0r9GBjXbQga2+tbkJ8ylu14M7dmg9JfCFNhHmuXNOErgms3lirIIzked19jKOqENrwVnFN8AAAqzPP1uWRCIWJAYk8BqKwx3nVMolJhXjFrPrhmE0uI5FhK501KAy3nAL5hvqMBAKioYzFrTrhmM08ophhmNsUVgIo6cE40Ixy54eot7GGKOui/i4VUAIUBfcJ19yeE6dKeeSkAQsBVWzmCGSBkYAMoKDfUtR2HlEHgyxNXvcQUxbsu+fMnawkI71vBKq/J4vkL71FwgGvClduAurVVEks31r8VnB2V12Tv/CnZBFK3NkxJ4fOvMJ/qpfVXt2H1rk/3ho7zGo1bAnBFOQS+owRcD64oB7qjtdKYOlD0FMCC1wdXbOeqAl4/fXnb1VS9EMJCUj9czmYCXL691IS8rWlgcAVIVILlO3yZwPucOXnb0QzcA2TKBZftLAUAoO4t098HiP2MXTDBmDSHDFhhgDj43K4M1cCQ3E2aQwYMPAcwKRcW7MzbvKNgk3JhwdK8rVoCjMbSvI17CqAeLRTkk7t5ebCgP2djnwJw6R6gns38d7DsbsKle8DuPYBxyZuWTy5sy/cE5u0BAIB63gz4zOv64t/ZlLGDWfPHgnlPAXFMzCkbNuVaAWWvhOGSN5gSo15NleSVtvnrxXb3e9elezNn+CaQF+p1E+DiN9XF692Eo5OZc+cXpW8F46K9zAlS7yZKcuMRHxftVTZ3sl4IMfkPQxJQnxul5uSNz4PKeZOjhfIviMCF+zgmGoD6NJaSD/VpzJUPLtyndN5kvQ9g9B6gItS3MWDZW+LG63dDgM52zFkutBwEYdl+oH6NuPrGRcOy/dzxeWOnEg4DeFdRul/Lkyz1byhkHFxwQFks1rhGU9wIYwY4oO0og/o30BVaCLjgbd0p8FPcEK3aA5gI9W8AWPqO7jS40f41cTjf3smLQ8X19e/oOZ8CjPiiSJz/LuOUmwcNqA+655HnHMCYJQDnvQcAADSwnuZM+KEB1yeuwxaUf0dQzuPiue9rnpJg0MB62ufQ8KPg3A3nHpSljxJo0HWgew4ZlwAJsxAQnOOZgAbXVR5TRFwaVDdlPFPxbDD7oIEWSIUG15E2Ns45JC1mtrGNYEjd2EHQrEPGGyAODaktbCycfVhJPD9xtDC0TswAMw9bY4CK0NBavj+Ls45IjyE6tlSG1Y4b4Ii1BlAFDa0ZeAyc9YGATAQyrBYa9xhoasOZHwaebxpaU/t1ZH4M1H0kaUnDGQJMMKyG9usw7ijYpoYzPoKg0F01tF9H/AHQLQE8y8HTHwswwbXar8MZIIgJpn8S3AR3X2OIAbSXIjsbTv+UTfEM0D1Xa7wGVwGCV4KnPhNggqt0VwBHEISYYHj1wGPw4CqAqErw5OeBxaDh1TVVAAMmMAwNp30R3AT3XqnBAAZsqMLScNqXvsXOBt13haJ8XQWQUwme+EqACS5XWAF0H0mGsOFUASa4v5rcPMEtAVIbTv0agkIPVJOYo1sCpDd8/BsBJrhMTn7OAIpM8Ni3wU3w4KUSDWBAuQx7w8e+8yFz5dBDlwjOy1UAtZXg0e8FmOBiGRXAoYqgJhBhomSM+dOwKIFTfgAacRFXv3jpFoUzgCZw8o9AIy9k+rxo8QHcJlBrw8k/5RQIAGKfk5GDqwDawUlHgUZVrfTnMu78OO4o2ICGE49mFAcnHpUbG5KtVXKUMmbhUAaNviDxb5z4s9xgY6oiQOJr4sAtAwaAJceAxpwPWHIMZJb9ZE4YQFFAR+VgyXFQqUVqpEeOu2UgCjx8XkL3Kik/cMtA5Eg9Ch53rnNA2KmgcZW0D7gqECkyqz3uF7cXCCPjz0nTO/vtPu5XZ4IwMf7sjFqnLwFx3FIQCSpXeexvrgqEgQlnZdU5920+9ndnApuZcGalGvur82P+cCawkZIzcurrf6Ef86czgU2UnO5LW7ad3ui/nAlsYOJpvnXl2+qP+tsZwUQmncqsJ99bwRyBHJLh1CS4kCP/cdVAJ5NPCaShuDt5xL/OCCqZUkWIdnJK+Yj/nBlkMOVkt/Q6xPI/Lt7U/N3UCecAAAAASUVORK5CYII=" class="ext-logo-icon" alt="">
+            <div>
+              <div class="ext-logo-name">Sponsor<span>Scope</span></div>
+              <div class="ext-logo-tag">UK Sponsor Register</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ext-tabs">
+          <div class="ext-tab active">Sponsor Filter</div>
+          <div class="ext-tab">Find Sponsors</div>
+          <div class="ext-tab">Check Company</div>
+        </div>
+
+        <div class="ext-body">
+          <div class="ext-card">
+            <div class="ext-card-top">
+              <div>
+                <div class="ext-company">Arup Group Ltd</div>
+                <div class="ext-role">Civil Engineer · London</div>
+              </div>
+              <span class="badge badge-a">A-Rated</span>
+            </div>
+            <div><span class="badge badge-trading">✓ Actively Trading</span></div>
+            <div class="ext-pills">
+              <span class="pill">Skilled Worker</span>
+              <span class="pill">Graduate</span>
+              <span class="pill">ICT</span>
+            </div>
+            <div class="ext-salary">
+              £ Min salary £31,300 transitional · £41,700 new applicants
+            </div>
+          </div>
+
+          <div class="ext-card" style="opacity:0.55">
+            <div class="ext-card-top">
+              <div>
+                <div class="ext-company">BuildRight Ltd</div>
+                <div class="ext-role">Structural Engineer · Leeds</div>
+              </div>
+              <span class="badge badge-b">B-Rated</span>
+            </div>
+            <div class="ext-pills">
+              <span class="pill">Skilled Worker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="float-chip float-chip-2">
+        <div class="float-label">Saved to shortlist</div>
+        <div class="float-val">3 sponsors added</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-label">What it does</div>
+  <h2 class="section-h2">Everything you need.<br>Nothing you don't.</h2>
+  <p class="section-sub">Built for serious job seekers navigating UK work visas. Every feature earns its place.</p>
+
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+      <div class="feat-title">Instant page scanning</div>
+      <div class="feat-desc">Opens any supported job site and automatically scans every company against the live register. No clicks needed.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="feat-title">A/B rating visibility</div>
+      <div class="feat-desc">B-rated companies cannot take on new sponsored workers. SponsorScope flags them clearly so you never apply to one.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+      <div class="feat-title">Companies House check</div>
+      <div class="feat-desc">Verifies the company is still actively trading — not dissolved or dormant. Some companies stay on the register after closing.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="feat-title">Visa route breakdown</div>
+      <div class="feat-desc">Shows exactly which visa routes each sponsor is licensed for — Skilled Worker, Graduate, ICT and more — as clear visual pills.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="feat-title">Salary threshold guidance</div>
+      <div class="feat-desc">Displays the correct minimum salary for your situation — £31,300 transitional or £41,700 new applicants — on every result.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="feat-title">Shortlist & CSV export</div>
+      <div class="feat-desc">Save promising companies to a shortlist, export as CSV, and share directly to WhatsApp with one tap.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<div class="divider-section" id="how">
+  <div class="divider-inner">
+    <div class="section-label">How it works</div>
+    <h2 class="section-h2">Up and running in 60 seconds.</h2>
+    <div class="steps">
+      <div>
+        <div class="step-num">1</div>
+        <div class="step-title">Install the extension</div>
+        <div class="step-desc">Add SponsorScope to Chrome from the Web Store. One click, takes seconds.</div>
+      </div>
+      <div>
+        <div class="step-num">2</div>
+        <div class="step-title">Browse job sites normally</div>
+        <div class="step-desc">Go to Indeed, LinkedIn, Reed, NHS Jobs, or any of 15+ supported sites. SponsorScope works quietly in the background.</div>
+      </div>
+      <div>
+        <div class="step-num">3</div>
+        <div class="step-title">See sponsor status instantly</div>
+        <div class="step-desc">Every company is checked in real time. A-rated, B-rated, not a sponsor — you know before you click apply.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2 class="section-h2">Simple, honest pricing.</h2>
+  <p class="section-sub">One tool, one job. No free tier — just a product that's worth paying for.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-plan">Monthly</div>
+      <div class="pricing-price">
+        <span class="price-sym">£</span>
+        <span class="price-amt">4.99</span>
+        <span class="price-per">/month</span>
+      </div>
+      <div class="price-note">Cancel any time</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Unlimited sponsor checks</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>All 15+ job sites</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Companies House verification</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Shortlist & CSV export</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Weekly register updates</li>
+      </ul>
+      <a href="https://chromewebstore.google.com" class="btn-plan btn-plan-outline">Get started</a>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="featured-badge">Best value</div>
+      <div class="pricing-plan">Annual</div>
+      <div class="pricing-price">
+        <span class="price-sym">£</span>
+        <span class="price-amt">39</span>
+        <span class="price-per">/year</span>
+      </div>
+      <div class="price-note"><span class="highlight">Save £20.88</span> vs monthly</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Everything in Monthly</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Priority support</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Early access to new features</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Shortlist & CSV export</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Weekly register updates</li>
+      </ul>
+      <a href="https://chromewebstore.google.com" class="btn-plan btn-plan-gradient">Get annual access</a>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-plan">Lifetime</div>
+      <div class="pricing-price">
+        <span class="price-sym">£</span>
+        <span class="price-amt">89</span>
+        <span class="price-per">once</span>
+      </div>
+      <div class="price-note"><span class="highlight">First 200 users only</span></div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Everything, forever</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>All future features included</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Never pay again</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Priority support</li>
+        <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Founder status</li>
+      </ul>
+      <a href="https://chromewebstore.google.com" class="btn-plan btn-plan-outline">Claim lifetime access</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="section-label">Questions</div>
+    <h2 class="section-h2" style="margin-bottom:2.5rem">Common questions.</h2>
+    <div class="faq-item">
+      <div class="faq-q">Which job sites does SponsorScope work on?</div>
+      <div class="faq-a">Indeed, LinkedIn, Reed, Totaljobs, CV-Library, Glassdoor, NHS Jobs, CWJobs, Adzuna, Guardian Jobs, Engineering Jobs, Technojobs, TechJobs, Caterer, HealthJobsUK, CharityJob, Jobs.ac.uk, New Civil Engineer, and ICE Recruit — with more added regularly.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How current is the sponsor data?</div>
+      <div class="faq-a">The UK Home Office publishes an updated register weekly. SponsorScope syncs automatically, so you're always working with data that's at most 7 days old.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the difference between A-rated and B-rated sponsors?</div>
+      <div class="faq-a">A-rated sponsors are fully compliant and can hire new sponsored workers. B-rated sponsors are under a Home Office action plan and cannot take on new sponsored workers until they return to A-rated status. SponsorScope flags B-rated companies with a clear warning.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to create an account?</div>
+      <div class="faq-a">No account is needed for the core features. You'll need a free Companies House API key — takes 2 minutes to get from the UK government — for the active trading verification.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel my subscription?</div>
+      <div class="faq-a">Yes — monthly and annual plans can be cancelled any time. You keep access until the end of your billing period. No hidden charges, no awkward cancellation flows.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-blob"></div>
+  <div class="cta-inner">
+    <h2 class="cta-h2">Stop applying to companies that <span class="highlight">can't hire you.</span></h2>
+    <p class="cta-sub">Every application to a non-sponsor is wasted time. SponsorScope gives you that time back — so you only apply where you actually have a chance.</p>
+    <a href="https://chromewebstore.google.com" class="btn-primary" style="display:inline-flex; margin:0 auto;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+      Add to Chrome
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 SponsorScope. Built for UK visa job seekers.</div>
+  <div class="footer-links">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms</a>
+    <a href="mailto:hello@sponsorscope.co.uk">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
