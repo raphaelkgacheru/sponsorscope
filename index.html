@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SponsorScope, Know Before You Apply</title>
+<title>SponsorScope | Know Before You Apply</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --green:#00b87a;--green-light:#00c896;--blue:#0077ff;
   --gradient:linear-gradient(135deg,#00c896,#0077ff);
-  --bg:#f8f9fc;--white:#ffffff;--surface:#f5f5f8;
+  --bg:#f8f9fc;--white:#fff;--surface:#f5f5f8;
   --border:rgba(0,0,0,0.06);--text-primary:#111;--text-secondary:#444;
   --text-muted:#888;--text-hint:#aaa;--green-bg:#e6faf3;--green-text:#00956a;
   --amber-bg:#fff8e6;--amber-text:#b07800;--font:"Nunito",system-ui,sans-serif;
@@ -29,8 +29,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
 .nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:700;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text-primary);}
-.nav-cta{background:var(--gradient)!important;color:white!important;padding:0.5rem 1.25rem;border-radius:10px;font-weight:800!important;font-size:13px!important;transition:opacity 0.2s!important;}
-.nav-cta:hover{opacity:0.88!important;}
+.nav-cta{background:var(--gradient)!important;color:white!important;padding:0.5rem 1.25rem;border-radius:10px;font-weight:800!important;font-size:13px!important;}
 
 /* HERO */
 .hero-outer{background:white;border-bottom:1px solid var(--border);}
@@ -38,8 +37,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--green-bg);border:1px solid rgba(0,185,120,0.2);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:800;color:var(--green-text);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;}
 .eyebrow-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);}}
-.hero-h1{font-size:clamp(2.6rem,4.5vw,3.8rem);font-weight:900;line-height:1.08;letter-spacing:-0.03em;color:var(--text-primary);margin-bottom:1.25rem;}
-.hero-h1 .hl{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-h1{font-size:clamp(2.6rem,4.5vw,3.8rem);font-weight:900;line-height:1.08;letter-spacing:-0.03em;margin-bottom:1.25rem;}
+.hl{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{font-size:1.05rem;color:var(--text-secondary);line-height:1.7;margin-bottom:2.25rem;font-weight:500;max-width:460px;}
 .hero-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient);color:white;text-decoration:none;padding:0.9rem 1.75rem;border-radius:12px;font-weight:800;font-size:14px;transition:all 0.2s;box-shadow:0 4px 16px rgba(0,200,150,0.25);}
@@ -47,19 +46,19 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .btn-ghost{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:700;padding:0.9rem 1rem;transition:color 0.2s;}
 .btn-ghost:hover{color:var(--text-primary);}
 .hero-stats{display:flex;gap:2.5rem;margin-top:2.75rem;padding-top:2.75rem;border-top:1px solid var(--border);}
-.stat-num{display:block;font-size:1.75rem;font-weight:900;color:var(--text-primary);line-height:1;margin-bottom:4px;letter-spacing:-0.02em;}
+.stat-num{display:block;font-size:1.75rem;font-weight:900;line-height:1;margin-bottom:4px;letter-spacing:-0.02em;}
 .stat-label{font-size:11px;color:var(--text-muted);font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
 
-/* EXTENSION MOCKUP */
+/* MOCKUP */
 .hero-visual{position:relative;display:flex;justify-content:center;}
 .ext-wrap{position:relative;width:340px;}
 .ext-frame{background:white;border-radius:16px;border:1px solid var(--border);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.12),0 4px 16px rgba(0,0,0,0.06);position:relative;z-index:2;}
-.ext-header{background:white;padding:13px 16px 11px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.07);}
+.ext-header{background:white;padding:13px 16px 11px;display:flex;align-items:center;border-bottom:1px solid rgba(0,0,0,0.07);}
 .ext-logo-row{display:flex;align-items:center;gap:9px;}
-.ext-logo-icon{width:34px;height:34px;border-radius:9px;object-fit:cover;flex-shrink:0;}
+.ext-logo-icon{width:34px;height:34px;border-radius:9px;object-fit:cover;}
 .ext-logo-name{font-size:15px;font-weight:900;color:var(--text-primary);line-height:1.1;}
 .ext-logo-name span{color:var(--green);}
-.ext-logo-tag{font-size:9px;font-weight:700;color:var(--text-hint);letter-spacing:0.03em;}
+.ext-logo-tag{font-size:9px;font-weight:700;color:var(--text-hint);}
 .ext-tabs{display:flex;border-bottom:1px solid rgba(0,0,0,0.07);padding:0 14px;background:white;}
 .ext-tab{flex:1;padding:10px 4px;font-size:10px;font-weight:700;color:var(--text-hint);text-align:center;border-bottom:2px solid transparent;}
 .ext-tab.active{color:var(--green);border-bottom-color:var(--green);}
@@ -71,13 +70,13 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:800;white-space:nowrap;}
 .badge-a{background:var(--green-bg);color:var(--green-text);border:1px solid rgba(0,185,120,0.2);}
 .badge-b{background:var(--amber-bg);color:var(--amber-text);border:1px solid rgba(240,184,0,0.3);}
-.badge-trading{background:var(--green-bg);color:var(--green-text);font-size:9px;padding:2px 7px;}
+.badge-t{background:var(--green-bg);color:var(--green-text);font-size:9px;padding:2px 7px;}
 .ext-pills{display:flex;gap:5px;flex-wrap:wrap;margin:7px 0;}
 .pill{padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;background:var(--surface);color:var(--text-muted);border:1px solid rgba(0,0,0,0.05);}
 .ext-salary{display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#e8faf3,#dff3ff);border:1px solid rgba(0,185,120,0.2);border-radius:8px;padding:7px 9px;font-size:10px;font-weight:700;color:var(--green-text);}
 .float-chip{position:absolute;background:white;border:1px solid var(--border);border-radius:12px;padding:9px 13px;box-shadow:0 8px 24px rgba(0,0,0,0.1);z-index:3;white-space:nowrap;}
-.float-chip-1{top:-14px;right:-55px;animation:float 3s ease-in-out infinite;}
-.float-chip-2{bottom:24px;left:-65px;animation:float 3s ease-in-out 1.5s infinite;}
+.fc1{top:-14px;right:-55px;animation:float 3s ease-in-out infinite;}
+.fc2{bottom:24px;left:-65px;animation:float 3s ease-in-out 1.5s infinite;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 .float-label{font-size:9px;font-weight:800;color:var(--text-hint);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;}
 .float-val{font-size:12px;font-weight:800;color:var(--green);}
@@ -85,7 +84,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 /* SECTIONS */
 .section{padding:6rem 4rem;max-width:1200px;margin:0 auto;}
 .section-label{font-size:10px;font-weight:800;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;}
-.section-h2{font-size:clamp(1.9rem,3vw,2.75rem);font-weight:900;line-height:1.12;letter-spacing:-0.025em;color:var(--text-primary);margin-bottom:1rem;}
+.section-h2{font-size:clamp(1.9rem,3vw,2.75rem);font-weight:900;line-height:1.12;letter-spacing:-0.025em;margin-bottom:1rem;}
 .section-sub{font-size:15px;color:var(--text-secondary);max-width:480px;line-height:1.65;font-weight:500;}
 
 /* FEATURES */
@@ -94,20 +93,22 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .feat-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.08);transform:translateY(-2px);}
 .feat-icon{width:42px;height:42px;background:linear-gradient(135deg,#e8faf3,#dff3ff);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
 .feat-icon svg{width:22px;height:22px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-.feat-title{font-size:14px;font-weight:800;color:var(--text-primary);margin-bottom:6px;}
+.feat-title{font-size:14px;font-weight:800;margin-bottom:6px;}
 .feat-desc{font-size:13px;color:var(--text-muted);line-height:1.6;font-weight:600;}
 
-/* HOW IT WORKS */
+/* HOW IT WORKS - fixed line */
 .divider-section{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6rem 4rem;}
 .divider-inner{max-width:1200px;margin:0 auto;}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:3.5rem;position:relative;}
-.steps::before{content:'';position:absolute;top:24px;left:calc(16.666% + 24px);right:calc(16.666% + 24px);height:2px;background:linear-gradient(90deg,var(--green-light),rgba(0,200,150,0.2));}
-.step-num{width:48px;height:48px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:white;margin-bottom:1.25rem;position:relative;z-index:1;flex-shrink:0;}
-.step-title{font-size:15px;font-weight:800;color:var(--text-primary);margin-bottom:0.5rem;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:3.5rem;}
+.steps-inner{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;}
+.steps-line{position:absolute;top:24px;left:80px;right:80px;height:2px;background:linear-gradient(90deg,var(--green-light),rgba(0,200,150,0.25));z-index:0;}
+.step{position:relative;z-index:1;}
+.step-num{width:48px;height:48px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:white;margin-bottom:1.25rem;position:relative;z-index:2;}
+.step-title{font-size:15px;font-weight:800;margin-bottom:0.5rem;}
 .step-desc{font-size:13px;color:var(--text-muted);line-height:1.6;font-weight:600;}
 
 /* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:3.5rem;max-width:760px;}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:3.5rem;max-width:700px;}
 .pricing-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2.25rem;position:relative;transition:transform 0.2s,box-shadow 0.2s;}
 .pricing-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.1);}
 .pricing-card.featured{border:2px solid var(--green);box-shadow:0 8px 32px rgba(0,200,150,0.12);}
@@ -115,7 +116,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .pricing-plan{font-size:10px;font-weight:800;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.25rem;}
 .pricing-price{display:flex;align-items:baseline;gap:3px;margin-bottom:6px;}
 .price-sym{font-size:1.4rem;font-weight:700;color:var(--text-secondary);}
-.price-amt{font-size:3.2rem;font-weight:900;color:var(--text-primary);line-height:1;letter-spacing:-0.04em;}
+.price-amt{font-size:3.2rem;font-weight:900;line-height:1;letter-spacing:-0.04em;}
 .price-per{font-size:13px;color:var(--text-muted);font-weight:700;align-self:flex-end;margin-bottom:4px;}
 .price-note{font-size:12px;color:var(--text-muted);font-weight:700;margin-bottom:1.75rem;min-height:18px;}
 .price-note .hl{color:var(--green);}
@@ -124,24 +125,24 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .pricing-features li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text-secondary);font-weight:600;line-height:1.4;}
 .check{width:18px;height:18px;flex-shrink:0;background:var(--green-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px;}
 .check svg{width:10px;height:10px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;}
-.btn-plan{display:block;width:100%;text-align:center;padding:0.85rem;border-radius:12px;font-size:13px;font-weight:800;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;font-family:var(--font);}
-.btn-plan-outline{background:white;border:1.5px solid #e5e5ea;color:var(--text-secondary);}
-.btn-plan-outline:hover{border-color:var(--green);color:var(--green);}
-.btn-plan-gradient{background:var(--gradient);color:white;box-shadow:0 4px 14px rgba(0,200,150,0.25);}
-.btn-plan-gradient:hover{opacity:0.9;transform:translateY(-1px);}
+.btn-plan{display:block;width:100%;text-align:center;padding:0.85rem;border-radius:12px;font-size:13px;font-weight:800;text-decoration:none;transition:all 0.2s;border:none;font-family:var(--font);cursor:pointer;}
+.btn-outline{background:white;border:1.5px solid #e5e5ea;color:var(--text-secondary);}
+.btn-outline:hover{border-color:var(--green);color:var(--green);}
+.btn-gradient{background:var(--gradient);color:white;box-shadow:0 4px 14px rgba(0,200,150,0.25);}
+.btn-gradient:hover{opacity:0.9;transform:translateY(-1px);}
 
 /* FAQ */
 .faq-section{background:white;border-top:1px solid var(--border);padding:6rem 4rem;}
 .faq-inner{max-width:760px;margin:0 auto;}
 .faq-item{border-bottom:1px solid var(--border);padding:1.5rem 0;}
-.faq-q{font-size:15px;font-weight:800;color:var(--text-primary);margin-bottom:0.6rem;}
+.faq-q{font-size:15px;font-weight:800;margin-bottom:0.6rem;}
 .faq-a{font-size:14px;color:var(--text-muted);line-height:1.7;font-weight:600;}
 
 /* CTA */
-.cta-section{padding:7rem 4rem;text-align:center;background:var(--bg);position:relative;overflow:hidden;}
+.cta-section{padding:7rem 4rem;text-align:center;position:relative;overflow:hidden;}
 .cta-blob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(0,200,150,0.08) 0%,transparent 70%);pointer-events:none;}
 .cta-inner{position:relative;z-index:1;max-width:560px;margin:0 auto;}
-.cta-h2{font-size:clamp(2rem,3.5vw,3rem);font-weight:900;line-height:1.12;color:var(--text-primary);margin-bottom:1.1rem;letter-spacing:-0.03em;}
+.cta-h2{font-size:clamp(2rem,3.5vw,3rem);font-weight:900;line-height:1.12;margin-bottom:1.1rem;letter-spacing:-0.03em;}
 .cta-sub{font-size:15px;color:var(--text-secondary);margin-bottom:2.25rem;font-weight:500;line-height:1.7;}
 
 /* FOOTER */
@@ -151,11 +152,6 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
 .footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;font-weight:700;transition:color 0.2s;}
 .footer-links a:hover{color:var(--green);}
 
-/* ANIMATIONS */
-.fade-in{opacity:0;transform:translateY(18px);animation:fadeIn 0.65s ease forwards;}
-@keyframes fadeIn{to{opacity:1;transform:translateY(0);}}
-.d1{animation-delay:0.05s;}.d2{animation-delay:0.15s;}.d3{animation-delay:0.28s;}.d4{animation-delay:0.42s;}
-
 @media(max-width:960px){
   nav{padding:0 1.5rem;}.nav-links{display:none;}
   .hero{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem;}
@@ -163,8 +159,8 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
   .section{padding:4.5rem 1.5rem;}
   .features-grid{grid-template-columns:1fr 1fr;}
   .divider-section{padding:4.5rem 1.5rem;}
-  .steps{grid-template-columns:1fr;}.steps::before{display:none;}
-  .pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}
+  .steps-inner{grid-template-columns:1fr;}.steps-line{display:none;}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px;}
   .faq-section{padding:4.5rem 1.5rem;}
   .cta-section{padding:5rem 1.5rem;}
   footer{padding:2rem 1.5rem;flex-direction:column;gap:1.25rem;text-align:center;}
@@ -189,11 +185,8 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
 
 <div class="hero-outer">
 <div class="hero">
-  <div class="fade-in d1">
-    <div class="hero-eyebrow">
-      <span class="eyebrow-dot"></span>
-      120,000+ UK Visa Sponsors
-    </div>
+  <div>
+    <div class="hero-eyebrow"><span class="eyebrow-dot"></span>120,000+ UK Visa Sponsors</div>
     <h1 class="hero-h1">Know before<br>you <span class="hl">apply.</span></h1>
     <p class="hero-sub">SponsorScope tells you instantly if a company can legally hire you on a UK work visa, right on the job listing, before you spend a minute on an application.</p>
     <div class="hero-actions">
@@ -210,9 +203,9 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
     </div>
   </div>
 
-  <div class="hero-visual fade-in d3">
+  <div class="hero-visual">
     <div class="ext-wrap">
-      <div class="float-chip float-chip-1">
+      <div class="float-chip fc1">
         <div class="float-label">Companies House</div>
         <div class="float-val">✓ Actively Trading</div>
       </div>
@@ -235,12 +228,12 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
           <div class="ext-card">
             <div class="ext-card-top">
               <div>
-                <div class="ext-company">Arup Group Ltd</div>
+                <div class="ext-company">Thornfield Engineering Ltd</div>
                 <div class="ext-role">Civil Engineer · London</div>
               </div>
               <span class="badge badge-a">A-Rated</span>
             </div>
-            <div><span class="badge badge-trading">✓ Actively Trading</span></div>
+            <div><span class="badge badge-t">✓ Actively Trading</span></div>
             <div class="ext-pills">
               <span class="pill">Skilled Worker</span>
               <span class="pill">Graduate</span>
@@ -251,7 +244,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
           <div class="ext-card" style="opacity:0.55">
             <div class="ext-card-top">
               <div>
-                <div class="ext-company">BuildRight Ltd</div>
+                <div class="ext-company">Meridian Build Group Ltd</div>
                 <div class="ext-role">Structural Engineer · Leeds</div>
               </div>
               <span class="badge badge-b">B-Rated</span>
@@ -260,7 +253,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
           </div>
         </div>
       </div>
-      <div class="float-chip float-chip-2">
+      <div class="float-chip fc2">
         <div class="float-label">Saved to shortlist</div>
         <div class="float-val">3 sponsors added</div>
       </div>
@@ -293,7 +286,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
     <div class="feat-card">
       <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
       <div class="feat-title">Visa route breakdown</div>
-      <div class="feat-desc">Shows exactly which visa routes each sponsor holds, Skilled Worker, Graduate, ICT and more, displayed as simple visual tags on every result.</div>
+      <div class="feat-desc">Shows exactly which visa routes each sponsor holds. Skilled Worker, Graduate, ICT and more, displayed as clear tags on every result.</div>
     </div>
     <div class="feat-card">
       <div class="feat-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
@@ -313,21 +306,24 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
   <div class="divider-inner">
     <div class="section-label">How it works</div>
     <h2 class="section-h2">Up and running in 60 seconds.</h2>
-    <div class="steps">
-      <div>
-        <div class="step-num">1</div>
-        <div class="step-title">Install the extension</div>
-        <div class="step-desc">Add SponsorScope to Chrome from the Web Store. One click and you are ready to go.</div>
-      </div>
-      <div>
-        <div class="step-num">2</div>
-        <div class="step-title">Browse job sites normally</div>
-        <div class="step-desc">Go to Indeed, LinkedIn, Reed, NHS Jobs or any of 15+ supported sites. SponsorScope runs quietly in the background.</div>
-      </div>
-      <div>
-        <div class="step-num">3</div>
-        <div class="step-title">See sponsor status instantly</div>
-        <div class="step-desc">Every company is checked in real time. A-rated, B-rated or not a sponsor at all. You know before you click apply.</div>
+    <div style="margin-top:3.5rem;position:relative;">
+      <div class="steps-line"></div>
+      <div class="steps-inner">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-title">Install the extension</div>
+          <div class="step-desc">Add SponsorScope to Chrome from the Web Store. One click and you are ready to go.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-title">Browse job sites normally</div>
+          <div class="step-desc">Go to Indeed, LinkedIn, Reed, NHS Jobs or any of 15+ supported sites. SponsorScope runs quietly in the background.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-title">See sponsor status instantly</div>
+          <div class="step-desc">Every company is checked in real time. A-rated, B-rated or not a sponsor at all. You know before you click apply.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -342,9 +338,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
     <div class="pricing-card">
       <div class="pricing-plan">Monthly</div>
       <div class="pricing-price">
-        <span class="price-sym">£</span>
-        <span class="price-amt">9.99</span>
-        <span class="price-per">/month</span>
+        <span class="price-sym">£</span><span class="price-amt">9.99</span><span class="price-per">/month</span>
       </div>
       <div class="price-note">Cancel any time</div>
       <div class="pricing-divider"></div>
@@ -355,16 +349,13 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
         <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Shortlist and CSV export</li>
         <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Weekly register updates</li>
       </ul>
-      <a href="https://chromewebstore.google.com" class="btn-plan btn-plan-outline">Get started</a>
+      <a href="https://chromewebstore.google.com" class="btn-plan btn-outline">Get started</a>
     </div>
-
     <div class="pricing-card featured">
       <div class="featured-badge">Best value</div>
       <div class="pricing-plan">Annual</div>
       <div class="pricing-price">
-        <span class="price-sym">£</span>
-        <span class="price-amt">79</span>
-        <span class="price-per">/year</span>
+        <span class="price-sym">£</span><span class="price-amt">79</span><span class="price-per">/year</span>
       </div>
       <div class="price-note"><span class="hl">Save £40.88</span> compared to monthly</div>
       <div class="pricing-divider"></div>
@@ -375,7 +366,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
         <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Shortlist and CSV export</li>
         <li><div class="check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4"/></svg></div>Weekly register updates</li>
       </ul>
-      <a href="https://chromewebstore.google.com" class="btn-plan btn-plan-gradient">Get annual access</a>
+      <a href="https://chromewebstore.google.com" class="btn-plan btn-gradient">Get annual access</a>
     </div>
   </div>
 </section>
@@ -403,7 +394,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
     </div>
     <div class="faq-item">
       <div class="faq-q">Can I cancel my subscription?</div>
-      <div class="faq-a">Yes. Monthly and annual plans can be cancelled any time. You keep full access until the end of your current billing period. No hidden charges and no awkward cancellation process.</div>
+      <div class="faq-a">Yes. Monthly and annual plans can be cancelled at any time. You keep full access until the end of your current billing period. No hidden charges and no awkward cancellation process.</div>
     </div>
   </div>
 </div>
@@ -412,7 +403,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
 <section class="cta-section">
   <div class="cta-blob"></div>
   <div class="cta-inner">
-    <h2 class="cta-h2">Stop applying to companies that <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">can't hire you.</span></h2>
+    <h2 class="cta-h2">Stop applying to companies that <span class="hl">can't hire you.</span></h2>
     <p class="cta-sub">Every application to a non-sponsor is wasted time. SponsorScope gives you that time back so you only apply where you actually have a chance.</p>
     <a href="https://chromewebstore.google.com" class="btn-primary" style="display:inline-flex;margin:0 auto;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
