@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact, SponsorScope</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--green:#00b87a;--gradient:linear-gradient(135deg,#00c896,#0077ff);--bg:#f8f9fc;--border:rgba(0,0,0,0.06);--text-primary:#111;--text-secondary:#444;--text-muted:#888;--green-bg:#e6faf3;--green-text:#00956a;--font:"Nunito",system-ui,sans-serif;}
+body{background:var(--bg);color:var(--text-primary);font-family:var(--font);font-size:16px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 4rem;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{width:34px;height:34px;border-radius:10px;}
+.nav-logo-name{font-size:17px;font-weight:900;color:var(--text-primary);}
+.nav-logo-name span{color:var(--green);}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:700;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text-primary);}
+.nav-cta{background:var(--gradient)!important;color:white!important;padding:0.5rem 1.25rem;border-radius:10px;font-weight:800!important;font-size:13px!important;}
+footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;display:flex;align-items:center;justify-content:space-between;}
+.footer-left{font-size:13px;color:var(--text-muted);font-weight:700;}
+.footer-links{display:flex;gap:2rem;}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;font-weight:700;transition:color 0.2s;}
+.footer-links a:hover,.footer-links a.active{color:var(--green);}
+.wrap{max-width:680px;margin:0 auto;padding:5rem 2rem 6rem;}
+.lbl{font-size:10px;font-weight:800;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;}
+h1{font-size:clamp(2rem,3.5vw,2.75rem);font-weight:900;line-height:1.12;letter-spacing:-0.025em;margin-bottom:0.5rem;}
+.sub{font-size:15px;color:var(--text-secondary);font-weight:600;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border);line-height:1.7;}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:2.5rem;margin-bottom:1.25rem;}
+.card-icon{width:48px;height:48px;background:linear-gradient(135deg,#e8faf3,#dff3ff);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;}
+.card-icon svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.card h2{font-size:16px;font-weight:900;margin-bottom:0.4rem;}
+.card p{font-size:14px;color:var(--text-muted);font-weight:600;line-height:1.6;margin-bottom:1rem;}
+.email-btn{display:inline-flex;align-items:center;gap:6px;background:var(--gradient);color:white;text-decoration:none;padding:0.65rem 1.25rem;border-radius:10px;font-size:13px;font-weight:800;transition:opacity 0.2s;}
+.email-btn:hover{opacity:0.88;}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.25rem;}
+.info-card{background:white;border:1px solid var(--border);border-radius:14px;padding:1.75rem;}
+.info-card h3{font-size:13px;font-weight:900;margin-bottom:0.4rem;}
+.info-card p{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.6;}
+@media(max-width:768px){nav{padding:0 1.5rem;}.nav-links{display:none;}footer{padding:2rem 1.5rem;flex-direction:column;gap:1.25rem;text-align:center;}.wrap{padding:3rem 1.5rem 4rem;}.info-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAINklEQVR4nO2cd4xURRzHfz/FrrEQjQUVC1WkiIiAQgiEcpzHHUgMCUg9uoo1VAlyFBVRpHMcRYyASDN00aMoRAXBRrH3jpDYW37+8XaX3dvd2zfzpr43n2QSwu3M7/fm+32/mTf3bgEckQaljLpnNkkZN+o0GyJcL3ED7p7jRFdJ88FCtAs+yO65TnidNB8USEP+zq/Nc8KbRIuBXFryGeDV+U58E7llALOebB2c8HbAYAT/BthV6sS3iVuLfWnrzwA7FzjxbaRl/5z65jbAzjInvs207FepxpUbYMdCJ34YaNU3q87ZDbBjkRM/TLTqk1HrKlk7OPkjQeYKUL7YyR9GWvdO0zvdAOVLnPhhpnWvFM3TlwCS8wtCh5mkqv3yUnf3R4E2PRO6n6QzD4d+TlSAbc+6uz9KtO2BAMl7ALf2R5KkTaAzQBTxVN+6zJX/KNKuO8YqgLv7o4pnAHf/R5aYAVwFiCrWLwHUvpvvz+KWlRIzsRPrKgB1uJ2/bwWz4OYXgqZjPdYYgDp2FT9mzEy4aZXwsW0h+/sAhiBD+GwxomgEYysA5XVRHzNuhI2rlcfWReyXQWhU0yF+Ml58/fMgvxlYAahToe4UAACA8ooAN6zVnYZ0jDEA5XfWnUIacTPi+nV6E5GIEUuAieIn4+Wnu1zLWQI8A5C+RvkFvoXQCeUXaJ0nKQ0MWgKsIITzpPUomAryhYyDL65XEosKbvMVyya0VQDq3ImnW3HF/8B1G0r9GBjXbQga2+tbkJ8ylu14M7dmg9JfCFNhHmuXNOErgms3lirIIzked19jKOqENrwVnFN8AAAqzPP1uWRCIWJAYk8BqKwx3nVMolJhXjFrPrhmE0uI5FhK501KAy3nAL5hvqMBAKioYzFrTrhmM08ophhmNsUVgIo6cE40Ixy54eot7GGKOui/i4VUAIUBfcJ19yeE6dKeeSkAQsBVWzmCGSBkYAMoKDfUtR2HlEHgyxNXvcQUxbsu+fMnawkI71vBKq/J4vkL71FwgGvClduAurVVEks31r8VnB2V12Tv/CnZBFK3NkxJ4fOvMJ/qpfVXt2H1rk/3ho7zGo1bAnBFOQS+owRcD64oB7qjtdKYOlD0FMCC1wdXbOeqAl4/fXnb1VS9EMJCUj9czmYCXL691IS8rWlgcAVIVILlO3yZwPucOXnb0QzcA2TKBZftLAUAoO4t098HiP2MXTDBmDSHDFhhgDj43K4M1cCQ3E2aQwYMPAcwKRcW7MzbvKNgk3JhwdK8rVoCjMbSvI17CqAeLRTkk7t5ebCgP2djnwJw6R6gns38d7DsbsKle8DuPYBxyZuWTy5sy/cE5u0BAIB63gz4zOv64t/ZlLGDWfPHgnlPAXFMzCkbNuVaAWWvhOGSN5gSo15NleSVtvnrxXb3e9elezNn+CaQF+p1E+DiN9XF692Eo5OZc+cXpW8F46K9zAlS7yZKcuMRHxftVTZ3sl4IMfkPQxJQnxul5uSNz4PKeZOjhfIviMCF+zgmGoD6NJaSD/VpzJUPLtyndN5kvQ9g9B6gItS3MWDZW+LG63dDgM52zFkutBwEYdl+oH6NuPrGRcOy/dzxeWOnEg4DeFdRul/Lkyz1byhkHFxwQFks1rhGU9wIYwY4oO0og/o30BVaCLjgbd0p8FPcEK3aA5gI9W8AWPqO7jS40f41cTjf3smLQ8X19e/oOZ8CjPiiSJz/LuOUmwcNqA+655HnHMCYJQDnvQcAADSwnuZM+KEB1yeuwxaUf0dQzuPiue9rnpJg0MB62ufQ8KPg3A3nHpSljxJo0HWgew4ZlwAJsxAQnOOZgAbXVR5TRFwaVDdlPFPxbDD7oIEWSIUG15E2Ns45JC1mtrGNYEjd2EHQrEPGGyAODaktbCycfVhJPD9xtDC0TswAMw9bY4CK0NBavj+Ls45IjyE6tlSG1Y4b4Ii1BlAFDa0ZeAyc9YGATAQyrBYa9xhoasOZHwaebxpaU/t1ZH4M1H0kaUnDGQJMMKyG9usw7ijYpoYzPoKg0F01tF9H/AHQLQE8y8HTHwswwbXar8MZIIgJpn8S3AR3X2OIAbSXIjsbTv+UTfEM0D1Xa7wGVwGCV4KnPhNggqt0VwBHEISYYHj1wGPw4CqAqErw5OeBxaDh1TVVAAMmMAwNp30R3AT3XqnBAAZsqMLScNqXvsXOBt13haJ8XQWQUwme+EqACS5XWAF0H0mGsOFUASa4v5rcPMEtAVIbTv0agkIPVJOYo1sCpDd8/BsBJrhMTn7OAIpM8Ni3wU3w4KUSDWBAuQx7w8e+8yFz5dBDlwjOy1UAtZXg0e8FmOBiGRXAoYqgJhBhomSM+dOwKIFTfgAacRFXv3jpFoUzgCZw8o9AIy9k+rxo8QHcJlBrw8k/5RQIAGKfk5GDqwDawUlHgUZVrfTnMu78OO4o2ICGE49mFAcnHpUbG5KtVXKUMmbhUAaNviDxb5z4s9xgY6oiQOJr4sAtAwaAJceAxpwPWHIMZJb9ZE4YQFFAR+VgyXFQqUVqpEeOu2UgCjx8XkL3Kik/cMtA5Eg9Ch53rnNA2KmgcZW0D7gqECkyqz3uF7cXCCPjz0nTO/vtPu5XZ4IwMf7sjFqnLwFx3FIQCSpXeexvrgqEgQlnZdU5920+9ndnApuZcGalGvur82P+cCawkZIzcurrf6Ef86czgU2UnO5LW7ad3ui/nAlsYOJpvnXl2+qP+tsZwUQmncqsJ99bwRyBHJLh1CS4kCP/cdVAJ5NPCaShuDt5xL/OCCqZUkWIdnJK+Yj/nBlkMOVkt/Q6xPI/Lt7U/N3UCecAAAAASUVORK5CYII=" alt="SponsorScope">
+    <span class="nav-logo-name">Sponsor<span>Scope</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#features">Features</a></li>
+    <li><a href="/#how">How it works</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="https://chromewebstore.google.com" class="nav-cta">Add to Chrome</a></li>
+  </ul>
+</nav>
+<div class="wrap">
+  <div class="lbl">Get in touch</div>
+  <h1>Contact us</h1>
+  <p class="sub">We read every message. Whether you have a question about the extension, a billing issue or just want to give feedback, we will get back to you promptly.</p>
+
+  <div class="card">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </div>
+    <h2>Email us</h2>
+    <p>For subscription help, technical questions or general feedback. We aim to reply within 24 hours on weekdays.</p>
+    <a href="mailto:support@sponsorscope.co.uk" class="email-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      support@sponsorscope.co.uk
+    </a>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>Billing issues</h3>
+      <p>Paid but cannot access the extension? Email us with your order details and we will sort it within a few hours.</p>
+    </div>
+    <div class="info-card">
+      <h3>Feature requests</h3>
+      <p>Have an idea that would make SponsorScope more useful for your job search? We genuinely want to hear it.</p>
+    </div>
+    <div class="info-card">
+      <h3>Bug reports</h3>
+      <p>Something not working? Let us know which job site you were on and what happened and we will look into it.</p>
+    </div>
+    <div class="info-card">
+      <h3>Response time</h3>
+      <p>We aim to reply to all emails within 24 hours Monday to Friday. Billing issues get priority and are usually faster.</p>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-left">© 2026 SponsorScope. Built for UK visa job seekers.</div>
+  <div class="footer-links">
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/contact.html" class="active">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
