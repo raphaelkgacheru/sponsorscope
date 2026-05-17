@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Successful — SponsorScope</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #00b87a;
+      --blue: #0077ff;
+      --dark: #0a0f1e;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #f7f9fc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      text-align: center;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #00b87a, #0077ff);
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg { width: 22px; height: 22px; }
+
+    .logo-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .logo-name span { color: var(--green); }
+
+    .tick-wrap {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg, #00b87a22, #0077ff22);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      animation: pop 0.4s 0.3s ease both;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .tick-wrap svg { width: 36px; height: 36px; }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .steps {
+      background: #f7f9fc;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .steps-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .step:last-child { margin-bottom: 0; }
+
+    .step-num {
+      width: 24px; height: 24px;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .step-text em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    .email-note {
+      background: #fff8e6;
+      border: 1.5px solid #ffd966;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #7a5c00;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 13px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.9; }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #bbb;
+    }
+
+    .footer-note a { color: var(--green); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="9" cy="9" r="5.5" stroke="white" stroke-width="2.2"/>
+          <line x1="13.5" y1="13.5" x2="18" y2="18" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="7.5" cy="7.5" r="2" fill="white" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="logo-name"><span>Sponsor</span>Scope</div>
+    </div>
+
+    <div class="tick-wrap">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="18" fill="url(#g)"/>
+        <polyline points="10,18 15,24 26,12" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="36" y2="36">
+            <stop offset="0%" stop-color="#00b87a"/>
+            <stop offset="100%" stop-color="#0077ff"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <h1>Payment successful!</h1>
+    <p class="subtitle">Welcome to SponsorScope. One last step and you are ready to go.</p>
+
+    <div class="email-note">
+      ⚠️ Important — use the same email address you just paid with when creating your account.
+    </div>
+
+    <div class="steps">
+      <div class="steps-title">How to get started</div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Click the <em>SponsorScope icon</em> in your Chrome toolbar</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">Click <em>Create account</em> and sign up with your payment email</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Check your inbox and <em>confirm your email address</em></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">Sign in to the extension and <em>start finding visa sponsors</em></div>
+      </div>
+    </div>
+
+    <a class="btn" href="https://chromewebstore.google.com/detail/sponsorscope/fajgghoolleplneoancngfgdflonlapi" target="_blank">
+      Open Chrome Extension ↗
+    </a>
+
+    <p class="footer-note">
+      Need help? Email <a href="mailto:support@sponsorscope.co.uk">support@sponsorscope.co.uk</a>
+    </p>
+
+  </div>
+</body>
+</html>
