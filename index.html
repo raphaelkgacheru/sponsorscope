@@ -96,16 +96,21 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .feat-title{font-size:14px;font-weight:800;margin-bottom:6px;}
 .feat-desc{font-size:13px;color:var(--text-muted);line-height:1.6;font-weight:600;}
 
-/* HOW IT WORKS - fixed line */
+/* HOW IT WORKS */
 .divider-section{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6rem 4rem;}
 .divider-inner{max-width:1200px;margin:0 auto;}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:3.5rem;}
-.steps-inner{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;}
 .steps-line{position:absolute;top:24px;left:calc(16.666% + 24px);right:calc(16.666% + 24px);height:2px;background:linear-gradient(90deg,var(--green-light),rgba(0,200,150,0.25));z-index:0;}
+.steps-inner{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;}
 .step{position:relative;z-index:1;}
 .step-num{width:48px;height:48px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:white;margin-bottom:1.25rem;position:relative;z-index:2;}
-.step-title{font-size:15px;font-weight:800;margin-bottom:0.5rem;}
-.step-desc{font-size:13px;color:var(--text-muted);line-height:1.6;font-weight:600;}
+.step-title{font-size:14px;font-weight:800;margin-bottom:0.5rem;}
+.step-desc{font-size:12px;color:var(--text-muted);line-height:1.6;font-weight:600;}
+
+/* GET STARTED BANNER */
+.get-started-banner{background:linear-gradient(135deg,#e8faf3,#dff3ff);border:1px solid rgba(0,185,120,0.2);border-radius:16px;padding:2rem 2.5rem;margin-top:3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.gsb-text{font-size:15px;font-weight:700;color:var(--text-primary);line-height:1.6;}
+.gsb-text strong{color:var(--green);}
+.gsb-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gradient);color:white;text-decoration:none;padding:0.75rem 1.5rem;border-radius:10px;font-weight:800;font-size:13px;white-space:nowrap;}
 
 /* PRICING */
 .pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:3.5rem;max-width:700px;}
@@ -130,6 +135,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .btn-outline:hover{border-color:var(--green);color:var(--green);}
 .btn-gradient{background:var(--gradient);color:white;box-shadow:0 4px 14px rgba(0,200,150,0.25);}
 .btn-gradient:hover{opacity:0.9;transform:translateY(-1px);}
+
+/* PRICING NOTE */
+.pricing-note{margin-top:1.5rem;max-width:700px;background:var(--green-bg);border:1px solid rgba(0,185,120,0.2);border-radius:12px;padding:1rem 1.5rem;font-size:13px;font-weight:700;color:var(--green-text);line-height:1.6;}
 
 /* FAQ */
 .faq-section{background:white;border-top:1px solid var(--border);padding:6rem 4rem;}
@@ -164,6 +172,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
   .faq-section{padding:4.5rem 1.5rem;}
   .cta-section{padding:5rem 1.5rem;}
   footer{padding:2rem 1.5rem;flex-direction:column;gap:1.25rem;text-align:center;}
+  .get-started-banner{flex-direction:column;}
 }
 </style>
 </head>
@@ -190,9 +199,9 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
     <h1 class="hero-h1">Know before<br>you <span class="hl">apply.</span></h1>
     <p class="hero-sub">SponsorScope tells you instantly if a company can legally hire you on a UK work visa, right on the job listing, before you spend a minute on an application.</p>
     <div class="hero-actions">
-      <a href="https://chromewebstore.google.com/detail/sponsorscope/fajgghoolleplneoancngfgdflonlapi" class="btn-primary">
+      <a href="#pricing" class="btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-        Add to Chrome
+        Get started
       </a>
       <a href="#how" class="btn-ghost">See how it works →</a>
     </div>
@@ -305,26 +314,43 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
 <div class="divider-section" id="how">
   <div class="divider-inner">
     <div class="section-label">How it works</div>
-    <h2 class="section-h2">Up and running in 60 seconds.</h2>
+    <h2 class="section-h2">Up and running in minutes.</h2>
+    <p class="section-sub" style="margin-bottom:0;">Follow these five steps and you will be finding visa sponsors on every job site you visit.</p>
     <div style="margin-top:3.5rem;position:relative;">
       <div class="steps-line"></div>
       <div class="steps-inner">
         <div class="step">
           <div class="step-num">1</div>
-          <div class="step-title">Install the extension</div>
-          <div class="step-desc">Add SponsorScope to Chrome from the Web Store. One click and you are ready to go.</div>
+          <div class="step-title">Choose a plan</div>
+          <div class="step-desc">Pick monthly or annual below. You will be taken to a secure Stripe payment page. Takes about 60 seconds.</div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <div class="step-title">Browse job sites normally</div>
-          <div class="step-desc">Go to Indeed, LinkedIn, Reed, NHS Jobs or any of 15+ supported sites. SponsorScope runs quietly in the background.</div>
+          <div class="step-title">Install the extension</div>
+          <div class="step-desc">After payment, install SponsorScope from the Chrome Web Store using the link on your confirmation page.</div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <div class="step-title">See sponsor status instantly</div>
-          <div class="step-desc">Every company is checked in real time. A-rated, B-rated or not a sponsor at all. You know before you click apply.</div>
+          <div class="step-title">Create your account</div>
+          <div class="step-desc">Click the extension icon and choose Create account. Use the same email address you paid with — this is how we verify your subscription.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-title">Confirm your email</div>
+          <div class="step-desc">Check your inbox for a confirmation email from SponsorScope. Click the link, then come back and sign in to the extension.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-title">Start finding sponsors</div>
+          <div class="step-desc">Browse Indeed, LinkedIn, Reed or any of 15+ job sites. Every company is checked against the live register in real time.</div>
         </div>
       </div>
+    </div>
+    <div class="get-started-banner">
+      <div class="gsb-text">
+        <strong>Important:</strong> when creating your account in the extension, always use the same email address you used to pay. This is how SponsorScope links your subscription to your account.
+      </div>
+      <a href="#pricing" class="gsb-btn">See pricing →</a>
     </div>
   </div>
 </div>
@@ -369,6 +395,9 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
       <a href="https://buy.stripe.com/bJe28r60Pchm6pTh06gQE01" class="btn-plan btn-gradient">Get annual access</a>
     </div>
   </div>
+  <div class="pricing-note">
+    After payment you will be redirected to a page with full setup instructions. You will need to install the Chrome extension and create a free account using your payment email. The whole process takes under 5 minutes.
+  </div>
 </section>
 
 <!-- FAQ -->
@@ -381,6 +410,18 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
       <div class="faq-a">Indeed, LinkedIn, Reed, Totaljobs, CV-Library, Glassdoor, NHS Jobs, CWJobs, Adzuna, Guardian Jobs, Engineering Jobs, Technojobs, TechJobs, Caterer, HealthJobsUK, CharityJob, Jobs.ac.uk, New Civil Engineer and ICE Recruit. More sites are added regularly.</div>
     </div>
     <div class="faq-item">
+      <div class="faq-q">How do I get started after paying?</div>
+      <div class="faq-a">After payment you will land on a setup page with step by step instructions. Install the extension from the Chrome Web Store, click the icon, create an account using your payment email, confirm your email address, and sign in. The extension will recognise your subscription and open straight away.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why do I need to create an account?</div>
+      <div class="faq-a">Your account is how SponsorScope verifies your subscription. When you create an account using the same email you paid with, the system links your payment to your access automatically. It only takes a minute and you will not need to do it again.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">I paid but the extension is asking me to subscribe. What do I do?</div>
+      <div class="faq-a">This usually happens when the account email does not match the payment email. Sign out of the extension, create a new account using the exact email address you paid with, confirm that email, and sign back in. If you are still stuck, email support@sponsorscope.co.uk and we will sort it out within 24 hours.</div>
+    </div>
+    <div class="faq-item">
       <div class="faq-q">How current is the sponsor data?</div>
       <div class="faq-a">The UK Home Office publishes an updated register every week. SponsorScope syncs automatically so you are always working with data no more than 7 days old.</div>
     </div>
@@ -389,12 +430,8 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
       <div class="faq-a">A-rated sponsors are fully compliant and can hire new sponsored workers. B-rated sponsors are under a Home Office action plan and cannot take on new sponsored workers until they return to A-rated status. SponsorScope flags B-rated companies with a clear warning on every result.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Do I need to create an account?</div>
-      <div class="faq-a">No account is needed for the core features. You will need a free Companies House API key for the active trading verification. It takes about 2 minutes to get from the UK government website and the extension walks you through it.</div>
-    </div>
-    <div class="faq-item">
       <div class="faq-q">Can I cancel my subscription?</div>
-      <div class="faq-a">Yes. Monthly and annual plans can be cancelled at any time. You keep full access until the end of your current billing period. No hidden charges and no awkward cancellation process.</div>
+      <div class="faq-a">Yes. Monthly and annual plans can be cancelled at any time from the Manage subscription page inside the extension settings. You keep full access until the end of your current billing period. No hidden charges and no awkward cancellation process.</div>
     </div>
   </div>
 </div>
@@ -405,9 +442,9 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
   <div class="cta-inner">
     <h2 class="cta-h2">Stop applying to companies that <span class="hl">can't hire you.</span></h2>
     <p class="cta-sub">Every application to a non-sponsor is wasted time. SponsorScope gives you that time back so you only apply where you actually have a chance.</p>
-    <a href="https://chromewebstore.google.com/detail/sponsorscope/fajgghoolleplneoancngfgdflonlapi" class="btn-primary" style="display:inline-flex;margin:0 auto;">
+    <a href="#pricing" class="btn-primary" style="display:inline-flex;margin:0 auto;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-      Add to Chrome
+      Get started
     </a>
   </div>
 </section>
