@@ -123,8 +123,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .sk-btn{width:80px;height:30px;border-radius:8px;}
 
 /* PAYWALL */
-.paywall-overlay{background:linear-gradient(to bottom,transparent,var(--bg) 60%);position:relative;margin-top:-120px;padding-top:120px;}
-.paywall-card{background:white;border:2px solid rgba(0,185,120,0.3);border-radius:20px;padding:2.5rem;text-align:center;max-width:500px;margin:0 auto;box-shadow:0 8px 40px rgba(0,185,120,0.12);}
+.jobs-paywall-wrap{position:relative;}
+.jobs-blurred{filter:blur(4px);pointer-events:none;user-select:none;opacity:0.5;}
+.paywall-float{position:absolute;top:40px;left:50%;transform:translateX(-50%);z-index:10;width:100%;max-width:500px;padding:0 1rem;}
+.paywall-card{background:white;border:2px solid rgba(0,185,120,0.3);border-radius:20px;padding:2.5rem;text-align:center;box-shadow:0 8px 40px rgba(0,185,120,0.15);}
 .paywall-lock{font-size:2.5rem;margin-bottom:1rem;}
 .paywall-title{font-size:20px;font-weight:900;margin-bottom:8px;}
 .paywall-desc{font-size:14px;color:var(--text-muted);font-weight:600;line-height:1.65;margin-bottom:1.5rem;}
@@ -381,9 +383,11 @@ function renderResults() {
   const start = (currentPage - 1) * JOBS_PER_PAGE;
   const pageJobs = filtered.slice(start, start + JOBS_PER_PAGE);
   const totalPages = Math.ceil(filtered.length / JOBS_PER_PAGE);
-
-  // Check if user is subscribed (stored by auth.js)
   const isSubscribed = checkSubscription();
+
+  const freeJobs    = isSubscribed ? pageJobs : pageJobs.slice(0, FREE_PREVIEW);
+  const lockedJobs  = isSubscribed ? [] : pageJobs.slice(FREE_PREVIEW);
+  const hasLocked   = lockedJobs.length > 0;
 
   let html = `
     <div class="results-meta">
@@ -394,30 +398,30 @@ function renderResults() {
         <option value="salary">Highest salary</option>
       </select>
     </div>
-    <div class="jobs-grid">`;
+    <div class="jobs-paywall-wrap">
+      <div class="jobs-grid">`;
 
-  pageJobs.forEach((job, idx) => {
-    const company   = job.company?.display_name || 'Unknown';
-    const title     = job.title || 'Job opening';
-    const location  = job.location?.display_name || 'UK';
-    const aRated    = isARated(company);
-    const salaryMin = job.salary_min ? `£${Math.round(job.salary_min / 1000)}k` : null;
-    const salaryMax = job.salary_max ? `£${Math.round(job.salary_max / 1000)}k` : null;
-    const salaryStr = salaryMin && salaryMax ? `${salaryMin} to ${salaryMax}` : salaryMin || salaryMax || null;
-    const daysAgo   = job.created ? getDaysAgo(job.created) : null;
-    const applyUrl  = job.redirect_url || '#';
-    const isNew     = daysAgo !== null && daysAgo <= 3;
+  // Render free jobs normally
+  freeJobs.forEach((job) => {
+    html += renderJobCard(job);
+  });
 
-    // Show paywall after FREE_PREVIEW jobs on page 1 for non-subscribers
-    const showPaywall = !isSubscribed && start === 0 && idx === FREE_PREVIEW;
+  html += `</div>`;
 
-    if (showPaywall) {
-      html += `</div>
-        <div class="paywall-overlay">
+  // Render locked jobs blurred with paywall card floating on top
+  if (hasLocked) {
+    html += `
+      <div style="position:relative;">
+        <div class="jobs-grid jobs-blurred">`;
+    lockedJobs.forEach(job => {
+      html += renderJobCard(job);
+    });
+    html += `</div>
+        <div class="paywall-float">
           <div class="paywall-card">
             <div class="paywall-lock">🔒</div>
             <div class="paywall-title">Subscribe to see all ${filtered.length} jobs</div>
-            <div class="paywall-desc">You are seeing 5 of ${filtered.length} verified sponsor jobs. Subscribe to unlock all results, unlimited searches, and the full SponsorScope extension.</div>
+            <div class="paywall-desc">You are seeing ${FREE_PREVIEW} of ${filtered.length} verified sponsor jobs. Subscribe to unlock all results, unlimited searches, and the full SponsorScope extension.</div>
             <div class="paywall-prices">
               <div class="price-pill">Monthly <span>£9.99/mo</span></div>
               <div class="price-pill">Annual <span>£79/yr</span></div>
@@ -425,47 +429,13 @@ function renderResults() {
             <a href="/#pricing" class="paywall-btn">Subscribe to unlock all jobs</a>
             <div class="paywall-note">Cancel any time. Includes the Chrome extension and this job board.</div>
           </div>
-        </div>`;
-      return;
-    }
-
-    html += `
-      <a class="job-card" href="${applyUrl}" target="_blank" rel="noopener">
-        <div class="job-card-top">
-          <div>
-            <div class="job-title">${escHtml(title)}</div>
-            <div class="job-company">${escHtml(company)}</div>
-            <div class="job-location">
-              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              ${escHtml(location)}
-            </div>
-          </div>
-          <div class="job-badges">
-            <span class="badge ${aRated ? 'badge-a' : 'badge-b'}">${aRated ? 'A-Rated Sponsor' : 'B-Rated Sponsor'}</span>
-            ${isNew ? '<span class="badge badge-new">New</span>' : ''}
-          </div>
         </div>
-        <div class="job-card-mid">
-          <span class="pill pill-green">✓ Verified Sponsor</span>
-          <span class="pill">Skilled Worker</span>
-          ${salaryStr ? `<span class="pill">${salaryStr}</span>` : ''}
-        </div>
-        <div class="job-card-bottom">
-          <div class="job-salary">${salaryStr ? `Salary: <strong>${salaryStr}</strong>` : '<span style="color:var(--text-hint);font-size:11px;">Salary not specified</span>'}</div>
-          <div class="job-meta">
-            ${daysAgo !== null ? `<span class="job-date">${daysAgo === 0 ? 'Today' : daysAgo === 1 ? 'Yesterday' : daysAgo + ' days ago'}</span>` : ''}
-            <span class="apply-btn" onclick="event.preventDefault();window.open('${applyUrl}','_blank')">
-              Apply
-              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </span>
-          </div>
-        </div>
-      </a>`;
-  });
+      </div>`;
+  }
 
   html += `</div>`;
 
-  // Pagination
+  // Pagination (subscribers only)
   if (isSubscribed && totalPages > 1) {
     html += `<div class="pagination">`;
     html += `<button class="page-btn" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>‹</button>`;
@@ -477,6 +447,52 @@ function renderResults() {
   }
 
   container.innerHTML = html;
+}
+
+function renderJobCard(job) {
+  const company   = job.company?.display_name || 'Unknown';
+  const title     = job.title || 'Job opening';
+  const location  = job.location?.display_name || 'UK';
+  const aRated    = isARated(company);
+  const salaryMin = job.salary_min ? `£${Math.round(job.salary_min / 1000)}k` : null;
+  const salaryMax = job.salary_max ? `£${Math.round(job.salary_max / 1000)}k` : null;
+  const salaryStr = salaryMin && salaryMax ? `${salaryMin} to ${salaryMax}` : salaryMin || salaryMax || null;
+  const daysAgo   = job.created ? getDaysAgo(job.created) : null;
+  const applyUrl  = job.redirect_url || '#';
+  const isNew     = daysAgo !== null && daysAgo <= 3;
+
+  return `
+    <a class="job-card" href="${applyUrl}" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <div>
+          <div class="job-title">${escHtml(title)}</div>
+          <div class="job-company">${escHtml(company)}</div>
+          <div class="job-location">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${escHtml(location)}
+          </div>
+        </div>
+        <div class="job-badges">
+          <span class="badge ${aRated ? 'badge-a' : 'badge-b'}">${aRated ? 'A-Rated Sponsor' : 'B-Rated Sponsor'}</span>
+          ${isNew ? '<span class="badge badge-new">New</span>' : ''}
+        </div>
+      </div>
+      <div class="job-card-mid">
+        <span class="pill pill-green">✓ Verified Sponsor</span>
+        <span class="pill">Skilled Worker</span>
+        ${salaryStr ? `<span class="pill">${salaryStr}</span>` : ''}
+      </div>
+      <div class="job-card-bottom">
+        <div class="job-salary">${salaryStr ? `Salary: <strong>${salaryStr}</strong>` : '<span style="color:var(--text-hint);font-size:11px;">Salary not specified</span>'}</div>
+        <div class="job-meta">
+          ${daysAgo !== null ? `<span class="job-date">${daysAgo === 0 ? 'Today' : daysAgo === 1 ? 'Yesterday' : daysAgo + ' days ago'}</span>` : ''}
+          <span class="apply-btn" onclick="event.preventDefault();window.open('${applyUrl}','_blank')">
+            Apply
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </span>
+        </div>
+      </div>
+    </a>`;
 }
 
 function goPage(page) {
