@@ -62,8 +62,54 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .search-btn:disabled{opacity:0.6;cursor:not-allowed;}
 .search-btn svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5;}
 
+/* AUTH BAR */
+.auth-bar{background:white;border-bottom:2px solid rgba(0,185,120,0.2);padding:1rem 4rem;}
+.auth-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.auth-bar-text{font-size:13px;font-weight:700;color:var(--text-secondary);}
+.auth-bar-text strong{color:var(--green);}
+.auth-bar-actions{display:flex;align-items:center;gap:8px;}
+.auth-bar-btn-outline{background:white;border:1.5px solid var(--border);border-radius:8px;padding:7px 14px;font-family:var(--font);font-size:12px;font-weight:800;color:var(--text-secondary);cursor:pointer;transition:all 0.15s;}
+.auth-bar-btn-outline:hover{border-color:var(--green);color:var(--green);}
+.auth-bar-btn-green{display:inline-flex;align-items:center;gap:6px;background:var(--gradient);color:white;border:none;padding:7px 14px;border-radius:8px;font-family:var(--font);font-size:12px;font-weight:800;cursor:pointer;text-decoration:none;}
+.auth-signed-in{display:flex;align-items:center;gap:12px;width:100%;justify-content:space-between;flex-wrap:wrap;}
+.auth-signed-in-left{font-size:12px;font-weight:700;color:var(--text-muted);}
+.auth-signed-in-left strong{color:var(--green-text);}
+.auth-signout-btn{background:none;border:1.5px solid var(--border);border-radius:7px;padding:5px 12px;font-family:var(--font);font-size:11px;font-weight:800;color:var(--text-muted);cursor:pointer;}
+.auth-signout-btn:hover{border-color:#cc3333;color:#cc3333;}
+
+/* AUTH MODAL */
+.auth-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;}
+.auth-modal-bg.hidden{display:none;}
+.auth-modal{background:white;border-radius:20px;padding:2rem;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,0.15);}
+.auth-modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.auth-modal-title{font-size:18px;font-weight:900;color:var(--text-primary);}
+.auth-modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-muted);line-height:1;padding:0;}
+.modal-tabs{display:flex;gap:4px;background:#f4f4f4;border-radius:8px;padding:3px;margin-bottom:16px;}
+.modal-tab{flex:1;padding:7px 0;border:none;background:transparent;border-radius:6px;font-family:var(--font);font-size:12px;font-weight:700;color:#888;cursor:pointer;transition:all 0.15s;}
+.modal-tab.active{background:#fff;color:#111;box-shadow:0 1px 4px rgba(0,0,0,0.10);}
+.modal-input{width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid #e8e8e8;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:600;color:#111;margin-bottom:10px;outline:none;transition:border-color 0.15s;}
+.modal-input:focus{border-color:var(--green);}
+.modal-btn{display:block;width:100%;padding:11px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:800;cursor:pointer;margin-top:2px;transition:opacity 0.15s;}
+.modal-btn:hover{opacity:0.9;}
+.modal-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.modal-link-btn{display:block;width:100%;margin-top:8px;background:none;border:none;font-family:var(--font);font-size:11px;font-weight:700;color:#888;cursor:pointer;text-align:center;padding:4px 0;}
+.modal-link-btn:hover{color:var(--green);}
+.modal-error{background:#fff0f0;border:1.5px solid #ffcccc;border-radius:7px;padding:8px 12px;font-size:11px;font-weight:700;color:#cc3333;margin-bottom:10px;text-align:center;}
+.modal-success{background:#f0fff8;border:1.5px solid #b3f0d9;border-radius:7px;padding:8px 12px;font-size:11px;font-weight:700;color:#007a4d;margin-bottom:10px;text-align:center;}
+.modal-note{font-size:11px;font-weight:600;color:#aaa;text-align:center;margin-top:10px;line-height:1.5;}
+.modal-divider{border:none;border-top:1px solid var(--border);margin:14px 0;}
+.modal-subscribe-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-radius:8px;padding:10px 14px;}
+.modal-subscribe-text{font-size:12px;font-weight:700;color:var(--text-secondary);}
+.modal-subscribe-link{font-size:12px;font-weight:800;color:var(--green);text-decoration:none;}
+.modal-subscribe-link:hover{text-decoration:underline;}
+
+@media(max-width:960px){.auth-bar{padding:1rem 1.5rem;}.auth-bar-inner{flex-direction:column;align-items:flex-start;}}
+
 /* FILTERS */
 .filters-bar{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap;}
+.filter-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:800;border:1.5px solid var(--border);background:white;color:var(--text-muted);cursor:pointer;transition:all 0.15s;}
+.filter-chip:hover,.filter-chip.active{border-color:var(--green);color:var(--green);background:var(--green-bg);}
+.filter-dot{width:6px;height:6px;border-radius:50%;background:currentColor;}{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap;}
 .filter-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:800;border:1.5px solid var(--border);background:white;color:var(--text-muted);cursor:pointer;transition:all 0.15s;}
 .filter-chip:hover,.filter-chip.active{border-color:var(--green);color:var(--green);background:var(--green-bg);}
 .filter-dot{width:6px;height:6px;border-radius:50%;background:currentColor;}
@@ -182,6 +228,61 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
     <li><a href="/#pricing" class="nav-cta">Get started</a></li>
   </ul>
 </nav>
+
+<!-- AUTH BAR -->
+<div class="auth-bar" id="auth-bar">
+  <div class="auth-bar-inner" id="auth-bar-inner">
+    <!-- Rendered by JS -->
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="auth-modal-bg hidden" id="auth-modal-bg">
+  <div class="auth-modal">
+    <div class="auth-modal-header">
+      <div class="auth-modal-title" id="modal-title">Sign in to SponsorScope</div>
+      <button class="auth-modal-close" onclick="closeModal()">×</button>
+    </div>
+
+    <div id="modal-error" class="modal-error" style="display:none;"></div>
+    <div id="modal-success" class="modal-success" style="display:none;"></div>
+
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="modal-tab-signin" onclick="switchModalTab('signin')">Sign in</button>
+      <button class="modal-tab" id="modal-tab-signup" onclick="switchModalTab('signup')">Create account</button>
+    </div>
+
+    <!-- Sign in form -->
+    <div id="modal-form-signin">
+      <input type="email" class="modal-input" id="modal-signin-email" placeholder="Email address" autocomplete="email">
+      <input type="password" class="modal-input" id="modal-signin-password" placeholder="Password" autocomplete="current-password">
+      <button class="modal-btn" id="modal-btn-signin" onclick="modalSignIn()">Sign in</button>
+      <button class="modal-link-btn" onclick="switchModalTab('forgot')">Forgot password?</button>
+    </div>
+
+    <!-- Sign up form -->
+    <div id="modal-form-signup" style="display:none;">
+      <input type="email" class="modal-input" id="modal-signup-email" placeholder="Email address (use your payment email)" autocomplete="email">
+      <input type="password" class="modal-input" id="modal-signup-password" placeholder="Create password (8+ characters)" autocomplete="new-password">
+      <button class="modal-btn" id="modal-btn-signup" onclick="modalSignUp()">Create account</button>
+      <p class="modal-note">Already have a subscription? Use the email you paid with.</p>
+    </div>
+
+    <!-- Forgot password form -->
+    <div id="modal-form-forgot" style="display:none;">
+      <p class="modal-note" style="margin-bottom:10px;">Enter your email and we will send a reset link.</p>
+      <input type="email" class="modal-input" id="modal-forgot-email" placeholder="Email address">
+      <button class="modal-btn" id="modal-btn-reset" onclick="modalResetPassword()">Send reset link</button>
+      <button class="modal-link-btn" onclick="switchModalTab('signin')">Back to sign in</button>
+    </div>
+
+    <hr class="modal-divider">
+    <div class="modal-subscribe-row">
+      <span class="modal-subscribe-text">Don't have a subscription yet?</span>
+      <a href="/#pricing" class="modal-subscribe-link">Subscribe from £9.99/mo →</a>
+    </div>
+  </div>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-inner">
@@ -511,16 +612,233 @@ function handleSort(val) {
   renderResults();
 }
 
-// ─── SUBSCRIPTION CHECK ───────────────────────────────────────
-function checkSubscription() {
-  // Check chrome storage if available (when accessed via extension context)
-  // Otherwise check localStorage for web users who signed in
+// ─── AUTH SYSTEM ──────────────────────────────────────────────
+const SUPABASE_URL = 'https://vjoxooemenlvrvrskbhp.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqb3hvb2VtZW5sdnJ2cnNrYmhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMzM2MzMsImV4cCI6MjA5NDYwOTYzM30.HkJg16b6KFEWsB1ftO4L-7l2OsertzzW31b4JcnuAY4';
+const SUPABASE_AUTH = `${SUPABASE_URL}/auth/v1`;
+const AUTH_HEADERS = { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON_KEY };
+
+let currentUser = null; // { email, session }
+let isSubscribed = false;
+
+async function initAuth() {
+  // Try to restore session from localStorage
   try {
-    const stored = localStorage.getItem('ss_subscribed');
-    return stored === 'true';
+    const stored = JSON.parse(localStorage.getItem('ss_web_session') || 'null');
+    if (stored && stored.refresh_token) {
+      const refreshed = await refreshSession(stored.refresh_token);
+      if (refreshed) {
+        currentUser = { email: stored.email, session: refreshed };
+        localStorage.setItem('ss_web_session', JSON.stringify({ ...refreshed, email: stored.email }));
+        await checkAndSetSubscription();
+        renderAuthBar();
+        return;
+      }
+    }
+  } catch(e) {}
+
+  currentUser = null;
+  isSubscribed = false;
+  renderAuthBar();
+}
+
+async function checkAndSetSubscription() {
+  if (!currentUser) { isSubscribed = false; return; }
+  try {
+    const res = await fetch(`${WORKER_URL}/check-subscription?email=${encodeURIComponent(currentUser.email)}`);
+    const data = await res.json();
+    isSubscribed = data.active === true;
   } catch(e) {
-    return false;
+    isSubscribed = false;
   }
+}
+
+function renderAuthBar() {
+  const inner = document.getElementById('auth-bar-inner');
+  if (currentUser) {
+    inner.innerHTML = `
+      <div class="auth-signed-in">
+        <div class="auth-signed-in-left">
+          Signed in as <strong>${escHtml(currentUser.email)}</strong>
+          ${isSubscribed ? ' &nbsp;✓ <span style="color:var(--green-text);font-weight:800;">Active subscription</span>' : ' &nbsp;⚠️ <span style="color:#b07800;font-weight:800;">No active subscription</span>'}
+        </div>
+        <button class="auth-signout-btn" onclick="signOut()">Sign out</button>
+      </div>`;
+  } else {
+    inner.innerHTML = `
+      <div class="auth-bar-text">Sign in to access all <strong>verified sponsor jobs</strong></div>
+      <div class="auth-bar-actions">
+        <button class="auth-bar-btn-outline" onclick="openModal('signin')">Sign in</button>
+        <button class="auth-bar-btn-green" onclick="openModal('signup')">Create account</button>
+      </div>`;
+  }
+}
+
+function openModal(tab) {
+  document.getElementById('auth-modal-bg').classList.remove('hidden');
+  switchModalTab(tab || 'signin');
+  clearModalMessages();
+}
+
+function closeModal() {
+  document.getElementById('auth-modal-bg').classList.add('hidden');
+}
+
+function switchModalTab(tab) {
+  ['signin','signup','forgot'].forEach(t => {
+    document.getElementById(`modal-form-${t}`).style.display = t === tab ? 'block' : 'none';
+    const tabEl = document.getElementById(`modal-tab-${t}`);
+    if (tabEl) tabEl.classList.toggle('active', t === tab);
+  });
+  clearModalMessages();
+}
+
+function clearModalMessages() {
+  document.getElementById('modal-error').style.display = 'none';
+  document.getElementById('modal-success').style.display = 'none';
+}
+
+function showModalError(msg) {
+  const el = document.getElementById('modal-error');
+  el.textContent = msg;
+  el.style.display = 'block';
+  document.getElementById('modal-success').style.display = 'none';
+}
+
+function showModalSuccess(msg) {
+  const el = document.getElementById('modal-success');
+  el.textContent = msg;
+  el.style.display = 'block';
+  document.getElementById('modal-error').style.display = 'none';
+}
+
+async function modalSignIn() {
+  const email    = document.getElementById('modal-signin-email').value.trim();
+  const password = document.getElementById('modal-signin-password').value;
+  if (!email || !password) { showModalError('Please enter your email and password.'); return; }
+
+  const btn = document.getElementById('modal-btn-signin');
+  btn.disabled = true; btn.textContent = 'Signing in...';
+  clearModalMessages();
+
+  try {
+    const res = await fetch(`${SUPABASE_AUTH}/token?grant_type=password`, {
+      method: 'POST', headers: AUTH_HEADERS,
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error_description || data.msg || 'Sign in failed');
+
+    currentUser = { email, session: data };
+    localStorage.setItem('ss_web_session', JSON.stringify({ ...data, email }));
+
+    // Ensure subscriber row exists
+    await fetch(`${WORKER_URL}/ensure-subscriber`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    }).catch(() => {});
+
+    await checkAndSetSubscription();
+    renderAuthBar();
+    closeModal();
+    renderResults(); // Re-render with subscription status
+
+  } catch(e) {
+    const msg = (e.message || '').toLowerCase();
+    if (msg.includes('invalid') || msg.includes('no user')) {
+      showModalError('No account found for this email. Try creating an account instead.');
+    } else if (msg.includes('not confirmed')) {
+      showModalError('Please confirm your email first. Check your inbox for a confirmation link.');
+    } else {
+      showModalError('Sign in failed. Check your email and password.');
+    }
+  } finally {
+    btn.disabled = false; btn.textContent = 'Sign in';
+  }
+}
+
+async function modalSignUp() {
+  const email    = document.getElementById('modal-signup-email').value.trim();
+  const password = document.getElementById('modal-signup-password').value;
+  if (!email) { showModalError('Please enter your email address.'); return; }
+  if (!password || password.length < 8) { showModalError('Password must be at least 8 characters.'); return; }
+
+  const btn = document.getElementById('modal-btn-signup');
+  btn.disabled = true; btn.textContent = 'Creating account...';
+  clearModalMessages();
+
+  try {
+    const res = await fetch(`${SUPABASE_AUTH}/signup`, {
+      method: 'POST', headers: AUTH_HEADERS,
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error_description || data.msg || 'Sign up failed');
+
+    showModalSuccess('Account created! Check your inbox and click the confirmation link, then sign in.');
+    switchModalTab('signin');
+    document.getElementById('modal-signin-email').value = email;
+
+  } catch(e) {
+    const msg = (e.message || '').toLowerCase();
+    if (msg.includes('already')) {
+      showModalError('An account already exists for this email. Try signing in instead.');
+      switchModalTab('signin');
+      document.getElementById('modal-signin-email').value = email;
+    } else {
+      showModalError('Could not create account. Please try again.');
+    }
+  } finally {
+    btn.disabled = false; btn.textContent = 'Create account';
+  }
+}
+
+async function modalResetPassword() {
+  const email = document.getElementById('modal-forgot-email').value.trim();
+  if (!email) { showModalError('Please enter your email address.'); return; }
+
+  const btn = document.getElementById('modal-btn-reset');
+  btn.disabled = true; btn.textContent = 'Sending...';
+
+  try {
+    await fetch(`${SUPABASE_AUTH}/recover`, {
+      method: 'POST', headers: AUTH_HEADERS,
+      body: JSON.stringify({ email })
+    });
+    showModalSuccess('Reset link sent. Check your inbox.');
+  } catch(e) {
+    showModalError('Could not send reset email. Please try again.');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Send reset link';
+  }
+}
+
+async function refreshSession(refreshToken) {
+  try {
+    const res = await fetch(`${SUPABASE_AUTH}/token?grant_type=refresh_token`, {
+      method: 'POST', headers: AUTH_HEADERS,
+      body: JSON.stringify({ refresh_token: refreshToken })
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch(e) { return null; }
+}
+
+function signOut() {
+  currentUser = null;
+  isSubscribed = false;
+  localStorage.removeItem('ss_web_session');
+  renderAuthBar();
+  renderResults();
+}
+
+// Close modal on background click
+document.getElementById('auth-modal-bg').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function checkSubscription() {
+  return isSubscribed;
 }
 
 // ─── HELPERS ──────────────────────────────────────────────────
@@ -572,15 +890,15 @@ function escHtml(str) {
 }
 
 // ─── INIT ─────────────────────────────────────────────────────
-// Auto-search on load with default values
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
   // Allow Enter key in inputs
   ['input-role','input-location'].forEach(id => {
     document.getElementById(id).addEventListener('keydown', e => {
       if (e.key === 'Enter') doSearch();
     });
   });
-  // Auto-run default search
+  // Init auth first, then search
+  await initAuth();
   doSearch();
 });
 
