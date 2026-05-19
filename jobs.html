@@ -345,6 +345,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
 // ─── CONFIG ───────────────────────────────────────────────────
 const ADZUNA_APP_ID  = 'bdbc326f';
 const ADZUNA_APP_KEY = '88ecbab6ae94b987822b9f96e7844991';
+const REED_API_KEY   = '025291d4-5971-4cda-ad44-9c33f6260ded';
 const WORKER_URL     = 'https://sponsorscope.raph3dkaranja.workers.dev';
 
 // Sponsor register cache
@@ -420,21 +421,22 @@ async function doSearch() {
   showSkeletons();
 
   try {
-    // Load sponsor register in parallel
-    await loadSponsorRegister();
-
-    // Query Adzuna
     const loc = location || 'uk';
     const encodedRole = encodeURIComponent(role);
     const encodedLoc  = encodeURIComponent(loc);
-    const url = `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${ADZUNA_APP_ID}&app_key=${ADZUNA_APP_KEY}&results_per_page=50&what=${encodedRole}&where=${encodedLoc}&content-type=application/json`;
 
-    const res  = await fetch(url);
-    const data = await res.json();
-    const jobs = data.results || [];
+    // Query Adzuna, Reed and sponsor register all in parallel
+    const [adzunaJobs, reedJobs] = await Promise.all([
+      fetchAdzunaJobs(encodedRole, encodedLoc),
+      fetchReedJobs(role, loc),
+      loadSponsorRegister(),
+    ]);
+
+    // Merge and deduplicate by title + company
+    const merged = mergeJobs(adzunaJobs, reedJobs);
 
     // Filter to sponsor companies only
-    const sponsorJobs = jobs.filter(j => isSponsor(j.company?.display_name));
+    const sponsorJobs = merged.filter(j => isSponsor(j.company?.display_name));
 
     allJobs = sponsorJobs;
     currentPage = 1;
@@ -447,6 +449,68 @@ async function doSearch() {
     btn.disabled = false;
     btn.innerHTML = `<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg> Search jobs`;
   }
+}
+
+async function fetchAdzunaJobs(encodedRole, encodedLoc) {
+  try {
+    const url = `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${ADZUNA_APP_ID}&app_key=${ADZUNA_APP_KEY}&results_per_page=50&what=${encodedRole}&where=${encodedLoc}&content-type=application/json`;
+    const res  = await fetch(url);
+    const data = await res.json();
+    return (data.results || []).map(j => ({
+      id: `adzuna-${j.id}`,
+      title: j.title,
+      company: j.company,
+      location: j.location,
+      salary_min: j.salary_min,
+      salary_max: j.salary_max,
+      created: j.created,
+      redirect_url: j.redirect_url,
+      source: 'Adzuna',
+    }));
+  } catch(e) {
+    console.warn('Adzuna fetch failed', e);
+    return [];
+  }
+}
+
+async function fetchReedJobs(role, location) {
+  try {
+    const encodedRole = encodeURIComponent(role);
+    const encodedLoc  = encodeURIComponent(location);
+    const credentials = btoa(`${REED_API_KEY}:`);
+    const url = `https://www.reed.co.uk/api/1.0/search?keywords=${encodedRole}&locationName=${encodedLoc}&resultsToTake=50`;
+    const res = await fetch(url, {
+      headers: { 'Authorization': `Basic ${credentials}` }
+    });
+    const data = await res.json();
+    return (data.results || []).map(j => ({
+      id: `reed-${j.jobId}`,
+      title: j.jobTitle,
+      company: { display_name: j.employerName },
+      location: { display_name: j.locationName },
+      salary_min: j.minimumSalary,
+      salary_max: j.maximumSalary,
+      created: j.date,
+      redirect_url: j.jobUrl,
+      source: 'Reed',
+    }));
+  } catch(e) {
+    console.warn('Reed fetch failed', e);
+    return [];
+  }
+}
+
+function mergeJobs(adzunaJobs, reedJobs) {
+  const seen = new Set();
+  const merged = [];
+  for (const job of [...adzunaJobs, ...reedJobs]) {
+    const key = `${(job.title || '').toLowerCase().trim()}-${(job.company?.display_name || '').toLowerCase().trim()}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      merged.push(job);
+    }
+  }
+  return merged;
 }
 
 // ─── FILTERS ──────────────────────────────────────────────────
@@ -581,6 +645,7 @@ function renderJobCard(job) {
       <div class="job-card-mid">
         <span class="pill pill-green">✓ Verified Sponsor</span>
         <span class="pill">Skilled Worker</span>
+        ${job.source ? `<span class="pill">${job.source}</span>` : ''}
         ${salaryStr ? `<span class="pill">${salaryStr}</span>` : ''}
       </div>
       <div class="job-card-bottom">
