@@ -346,6 +346,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
 const ADZUNA_APP_ID  = 'bdbc326f';
 const ADZUNA_APP_KEY = '88ecbab6ae94b987822b9f96e7844991';
 const REED_API_KEY   = '025291d4-5971-4cda-ad44-9c33f6260ded';
+const JOOBLE_API_KEY = '8ef05315-94cb-4b8e-a749-f2816d5d9b3f';
 const WORKER_URL     = 'https://sponsorscope.raph3dkaranja.workers.dev';
 
 // Sponsor register cache
@@ -357,7 +358,7 @@ let allJobs = [];
 let currentFilter = 'all';
 let currentPage = 1;
 const JOBS_PER_PAGE = 10;
-const FREE_PREVIEW  = 3; // Jobs shown before paywall
+const FREE_PREVIEW  = 1; // Jobs shown before paywall
 
 // ─── SPONSOR REGISTER ─────────────────────────────────────────
 async function loadSponsorRegister() {
@@ -425,15 +426,16 @@ async function doSearch() {
     const encodedRole = encodeURIComponent(role);
     const encodedLoc  = encodeURIComponent(loc);
 
-    // Query Adzuna, Reed and sponsor register all in parallel
-    const [adzunaJobs, reedJobs] = await Promise.all([
+    // Query Adzuna, Reed, Jooble and sponsor register all in parallel
+    const [adzunaJobs, reedJobs, joobleJobs] = await Promise.all([
       fetchAdzunaJobs(encodedRole, encodedLoc),
       fetchReedJobs(role, loc),
+      fetchJoobleJobs(role, loc),
       loadSponsorRegister(),
     ]);
 
     // Merge and deduplicate by title + company
-    const merged = mergeJobs(adzunaJobs, reedJobs);
+    const merged = mergeJobs(adzunaJobs, reedJobs, joobleJobs);
 
     // Filter to sponsor companies only
     const sponsorJobs = merged.filter(j => isSponsor(j.company?.display_name));
@@ -500,10 +502,35 @@ async function fetchReedJobs(role, location) {
   }
 }
 
-function mergeJobs(adzunaJobs, reedJobs) {
+async function fetchJoobleJobs(role, location) {
+  try {
+    const res = await fetch(`https://jooble.org/api/${JOOBLE_API_KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ keywords: role, location: location || 'United Kingdom', page: '1' })
+    });
+    const data = await res.json();
+    return (data.jobs || []).map(j => ({
+      id: `jooble-${j.id}`,
+      title: j.title,
+      company: { display_name: j.company },
+      location: { display_name: j.location },
+      salary_min: null,
+      salary_max: j.salary ? parseFloat(j.salary.replace(/[^0-9.]/g, '')) || null : null,
+      created: j.updated,
+      redirect_url: j.link,
+      source: 'Jooble',
+    }));
+  } catch(e) {
+    console.warn('Jooble fetch failed', e);
+    return [];
+  }
+}
+
+function mergeJobs(adzunaJobs, reedJobs, joobleJobs = []) {
   const seen = new Set();
   const merged = [];
-  for (const job of [...adzunaJobs, ...reedJobs]) {
+  for (const job of [...adzunaJobs, ...reedJobs, ...joobleJobs]) {
     const key = `${(job.title || '').toLowerCase().trim()}-${(job.company?.display_name || '').toLowerCase().trim()}`;
     if (!seen.has(key)) {
       seen.add(key);
