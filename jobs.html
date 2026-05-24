@@ -197,6 +197,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
 
 @media(max-width:960px){
   nav{padding:0 1.5rem;}.nav-links{display:none;}
+  .hamburger{display:flex;}
   .page-hero{padding:2.5rem 1.5rem 2rem;}
   .search-section{padding:1.25rem 1.5rem;}
   .results-section{padding:1.5rem 1.5rem;}
@@ -204,6 +205,17 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
   .search-btn{width:100%;}
   footer{padding:2rem 1.5rem;flex-direction:column;gap:1.25rem;text-align:center;}
 }
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:white;border-bottom:1px solid var(--border);padding:1.25rem 1.5rem;z-index:99;flex-direction:column;gap:0;box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:var(--text-secondary);text-decoration:none;font-size:15px;font-weight:700;padding:0.85rem 0;border-bottom:1px solid var(--border);transition:color 0.2s;}
+.mobile-nav a:last-child{border-bottom:none;}
+.mobile-nav a:hover{color:var(--green);}
+.mobile-nav .nav-cta{background:var(--gradient)!important;color:white!important;padding:0.85rem 1.25rem!important;border-radius:10px;text-align:center;margin-top:0.5rem;border-bottom:none!important;}
 </style>
 </head>
 <body>
@@ -227,7 +239,20 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
     <li><a href="/#faq">FAQ</a></li>
     <li><a href="/#pricing" class="nav-cta">Get started</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="/#features" onclick="closeMobileNav()">Features</a>
+  <a href="/#how" onclick="closeMobileNav()">How it works</a>
+  <a href="/jobs.html">Sponsor Jobs</a>
+  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="/#pricing" class="nav-cta" onclick="closeMobileNav()">Get started</a>
+</div>
 
 <!-- AUTH BAR -->
 <div class="auth-bar" id="auth-bar">
@@ -998,6 +1023,26 @@ window.addEventListener('load', async () => {
 const style = document.createElement('style');
 style.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
 document.head.appendChild(style);
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+if(hamburger && mobileNav){
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+    }
+  });
+}
+function closeMobileNav(){
+  if(hamburger) hamburger.classList.remove('open');
+  if(mobileNav) mobileNav.classList.remove('open');
+}
 </script>
 
 </body>
