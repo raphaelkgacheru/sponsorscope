@@ -506,11 +506,9 @@ async function fetchReedJobs(role, location) {
   try {
     const encodedRole = encodeURIComponent(role);
     const encodedLoc  = encodeURIComponent(location);
-    const credentials = btoa(`${REED_API_KEY}:`);
-    const url = `https://www.reed.co.uk/api/1.0/search?keywords=${encodedRole}&locationName=${encodedLoc}&resultsToTake=50`;
-    const res = await fetch(url, {
-      headers: { 'Authorization': `Basic ${credentials}` }
-    });
+    // Route through Worker to avoid CORS issues with Reed's API
+    const url = `${WORKER_URL}/reed-jobs?role=${encodedRole}&location=${encodedLoc}`;
+    const res = await fetch(url);
     const data = await res.json();
     return (data.results || []).map(j => ({
       id: `reed-${j.jobId}`,
