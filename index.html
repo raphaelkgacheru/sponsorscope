@@ -173,7 +173,21 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
 .footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;font-weight:700;transition:color 0.2s;}
 .footer-links a:hover{color:var(--green);}
 
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:white;border-bottom:1px solid var(--border);padding:1.25rem 1.5rem;z-index:99;flex-direction:column;gap:0;box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:var(--text-secondary);text-decoration:none;font-size:15px;font-weight:700;padding:0.85rem 0;border-bottom:1px solid var(--border);transition:color 0.2s;}
+.mobile-nav a:last-child{border-bottom:none;}
+.mobile-nav a:hover{color:var(--green);}
+.mobile-nav .nav-cta{background:var(--gradient)!important;color:white!important;padding:0.85rem 1.25rem!important;border-radius:10px;text-align:center;margin-top:0.5rem;border-bottom:none!important;}
+
 @media(max-width:960px){
+  .hamburger{display:flex;}
   nav{padding:0 1.5rem;}.nav-links{display:none;}
   .hero{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem;}
   .float-chip{display:none;}
@@ -201,6 +215,25 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
     <li><a href="#how">How it works</a></li>
     <li><a href="#videos">Videos</a></li>
     <li><a href="/jobs.html">Sponsor Jobs</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#" class="nav-cta">Get started</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#features" onclick="closeMobileNav()">Features</a>
+  <a href="#how" onclick="closeMobileNav()">How it works</a>
+  <a href="#videos" onclick="closeMobileNav()">Videos</a>
+  <a href="/jobs.html">Sponsor Jobs</a>
+  <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="#" class="nav-cta" onclick="closeMobileNav()">Get started</a>
+</div>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#pricing" class="nav-cta">Get started</a></li>
@@ -516,6 +549,28 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
     <a href="/contact.html">Contact</a>
   </div>
 </footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+
+function closeMobileNav() {
+  hamburger.classList.remove('open');
+  mobileNav.classList.remove('open');
+}
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+    closeMobileNav();
+  }
+});
+</script>
 
 </body>
 </html>
