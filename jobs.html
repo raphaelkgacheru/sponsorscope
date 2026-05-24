@@ -482,7 +482,7 @@ async function doSearch() {
 
 async function fetchAdzunaJobs(encodedRole, encodedLoc) {
   try {
-    const url = `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${ADZUNA_APP_ID}&app_key=${ADZUNA_APP_KEY}&results_per_page=50&what=${encodedRole}&where=${encodedLoc}&content-type=application/json`;
+    const url = `${WORKER_URL}/adzuna-jobs?role=${encodedRole}&location=${encodedLoc}`;
     const res  = await fetch(url);
     const data = await res.json();
     return (data.results || []).map(j => ({
@@ -529,11 +529,9 @@ async function fetchReedJobs(role, location) {
 
 async function fetchJoobleJobs(role, location) {
   try {
-    const res = await fetch(`https://jooble.org/api/${JOOBLE_API_KEY}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ keywords: role, location: location || 'United Kingdom', page: '1' })
-    });
+    const encodedRole = encodeURIComponent(role);
+    const encodedLoc  = encodeURIComponent(location || 'United Kingdom');
+    const res = await fetch(`${WORKER_URL}/jooble-jobs?role=${encodedRole}&location=${encodedLoc}`);
     const data = await res.json();
     return (data.jobs || []).map(j => ({
       id: `jooble-${j.id}`,
