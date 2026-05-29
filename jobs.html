@@ -137,7 +137,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .badge-new{background:#f0f0ff;color:#5555cc;border:1px solid rgba(85,85,204,0.2);}
 .job-card-mid{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
 .pill{padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;background:var(--surface);color:var(--text-muted);border:1px solid rgba(0,0,0,0.05);}
-.pill-green{background:var(--green-bg);color:var(--green-text);border:1px solid rgba(0,185,120,0.15);}
+.pill-active{background:#fff3cd;color:#856404;font-weight:700;border:1px solid #ffc107;} .pill-green{background:var(--green-bg);color:var(--green-text);border:1px solid rgba(0,185,120,0.15);}
 .job-card-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--border);}
 .job-salary{font-size:12px;font-weight:700;color:var(--text-secondary);}
 .job-salary strong{color:var(--green);}
@@ -344,6 +344,7 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;d
       <div class="filter-chip active" data-filter="all" onclick="setFilter('all')"><span class="filter-dot"></span>All sponsors</div>
       <div class="filter-chip" data-filter="a-rated" onclick="setFilter('a-rated')"><span class="filter-dot"></span>A-rated only</div>
       <div class="filter-chip" data-filter="salary" onclick="setFilter('salary')"><span class="filter-dot"></span>With salary</div>
+      <div class="filter-chip" data-filter="actively-sponsoring" onclick="setFilter('actively-sponsoring')"><span class="filter-dot" style="background:#ffc107;"></span>💯 Actively sponsoring</div>
     </div>
   </div>
 </div>
@@ -560,6 +561,12 @@ function mergeJobs(adzunaJobs, reedJobs, joobleJobs = []) {
       merged.push(job);
     }
   }
+  // Sort: actively sponsoring first, then by date
+  merged.sort((a, b) => {
+    if (a.activelySponsoring && !b.activelySponsoring) return -1;
+    if (!a.activelySponsoring && b.activelySponsoring) return 1;
+    return 0;
+  });
   return merged;
 }
 
@@ -577,6 +584,7 @@ function getFilteredJobs() {
   let jobs = [...allJobs];
   if (currentFilter === 'a-rated') jobs = jobs.filter(j => isARated(j.company?.display_name));
   if (currentFilter === 'salary')  jobs = jobs.filter(j => j.salary_min || j.salary_max);
+  if (currentFilter === 'actively-sponsoring') jobs = jobs.filter(j => j.activelySponsoring);
   return jobs;
 }
 
@@ -694,6 +702,7 @@ function renderJobCard(job) {
       </div>
       <div class="job-card-mid">
         <span class="pill pill-green">✓ Verified Sponsor</span>
+        ${job.activelySponsoring ? '<span class="pill pill-active">💯 Actively Sponsoring</span>' : ''}
         <span class="pill">Skilled Worker</span>
         ${job.source ? `<span class="pill">${job.source}</span>` : ''}
         ${salaryStr ? `<span class="pill">${salaryStr}</span>` : ''}
