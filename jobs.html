@@ -496,6 +496,7 @@ async function fetchAdzunaJobs(encodedRole, encodedLoc) {
       created: j.created,
       redirect_url: j.redirect_url,
       source: 'Adzuna',
+      activelySponsoring: j.activelySponsoring || false,
     }));
   } catch(e) {
     console.warn('Adzuna fetch failed', e);
@@ -521,6 +522,7 @@ async function fetchReedJobs(role, location) {
       created: j.date,
       redirect_url: j.jobUrl,
       source: 'Reed',
+      activelySponsoring: j.activelySponsoring || false,
     }));
   } catch(e) {
     console.warn('Reed fetch failed', e);
@@ -543,6 +545,7 @@ async function fetchJoobleJobs(role, location) {
       salary_max: j.salary ? parseFloat(j.salary.replace(/[^0-9.]/g, '')) || null : null,
       created: j.updated,
       redirect_url: j.link,
+      activelySponsoring: j.activelySponsoring || false,
       source: 'Jooble',
     }));
   } catch(e) {
