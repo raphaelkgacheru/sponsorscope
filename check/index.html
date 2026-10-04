@@ -73,7 +73,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .pill{padding:3px 9px;border-radius:20px;font-size:12px;font-weight:800;background:white;color:var(--text-secondary);border:1px solid rgba(0,0,0,0.06);}
 .rating-note{font-size:12px;font-weight:700;color:var(--text-muted);}
 .ch-box{background:var(--surface);border-radius:12px;padding:12px 14px;margin-bottom:1rem;}
-.ch-box p{font-size:13px;font-weight:650;color:var(--text-secondary);line-height:1.55;}
+.ch-box .ch-line{font-size:14px;font-weight:800;color:var(--text-primary);line-height:1.45;}
+.ch-box .ch-active{color:var(--green-text);}
+.ch-box .ch-inactive{color:var(--red-text);}
+.ch-box .ch-meta{font-size:12px;font-weight:700;color:var(--text-muted);margin-top:4px;}
 .upsell{display:block;font-size:14px;font-weight:800;color:var(--green-text);text-decoration:none;line-height:1.5;}
 .upsell:hover{text-decoration:underline;}
 .updated{margin-top:0.85rem;font-size:11px;font-weight:700;color:var(--text-hint);}
@@ -189,6 +192,7 @@ let loadPromise = null;
 let lastQuery = '';
 let lastResult = null;
 let lastMatches = [];
+let statusRequest = 0;
 
 const resultsEl = document.getElementById('results');
 const formEl = document.getElementById('check-form');
@@ -277,7 +281,46 @@ function updatedLine() {
 }
 
 function companiesHouseBlock() {
-  return '<div class="ch-box"><div class="block-label">Companies House</div><p>Not checked. This page only reads the Home Office sponsor register, so it cannot say whether Companies House shows the company as actively trading, dissolved, or dormant.</p></div>';
+  return '<div class="ch-box" id="ch-status"><div class="block-label">Companies House</div><p class="ch-line">Checking Companies House...</p></div>';
+}
+
+function companyStatusDetail(result) {
+  const bits = [result.matchedName, result.companyStatus].filter(Boolean);
+  return bits.length ? '<p class="ch-meta">' + esc(bits.join(' · ')) + '</p>' : '';
+}
+
+function paintCompanyStatus(result) {
+  const box = document.getElementById('ch-status');
+  if (!box) return;
+  let body = '<p class="ch-line">Companies House did not return a trading status.</p>';
+  if (result.kind === 'active') {
+    body = '<p class="ch-line ch-active">Actively trading</p>' + companyStatusDetail(result);
+  } else if (result.kind === 'inactive') {
+    body = '<p class="ch-line ch-inactive">Not trading</p>' + companyStatusDetail(result);
+  } else if (result.kind === 'none') {
+    body = '<p class="ch-line">No Companies House company matched this name.</p>';
+  }
+  box.innerHTML = '<div class="block-label">Companies House</div>' + body;
+}
+
+async function loadCompanyStatus(name) {
+  const token = ++statusRequest;
+  try {
+    const res = await fetch(WORKER_URL + '/company-status?q=' + encodeURIComponent(name), {
+      headers: { 'Accept': 'application/json' }
+    });
+    if (token !== statusRequest) return;
+    if (!res.ok) {
+      paintCompanyStatus({ kind: 'unavailable' });
+      return;
+    }
+    const data = await res.json();
+    if (token !== statusRequest) return;
+    paintCompanyStatus(SponsorCheck.interpretCompanyStatus(data));
+  } catch (err) {
+    if (token !== statusRequest) return;
+    paintCompanyStatus({ kind: 'unavailable' });
+  }
 }
 
 function renderDetail(company) {
@@ -359,6 +402,7 @@ function showFeatured(hit) {
   lastMatches = others;
   resultsEl.innerHTML = renderDetail(hit.company) + renderOtherNames(others);
   updateUrl(lastQuery, hit.company.name);
+  loadCompanyStatus(hit.company.name);
 }
 
 function choose(index) {

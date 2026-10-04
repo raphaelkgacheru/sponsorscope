@@ -155,10 +155,32 @@
     return { total: scored.length, matches: scored.slice(0, cap) };
   }
 
+  function interpretCompanyStatus(data) {
+    if (!data || typeof data !== 'object' || !Object.prototype.hasOwnProperty.call(data, 'trading')) {
+      return { kind: 'unavailable' };
+    }
+    if (data.trading === null) {
+      return { kind: 'none', matchedName: data.matchedName ? String(data.matchedName) : '' };
+    }
+    var trading = String(data.trading).trim().toLowerCase();
+    var status = data.companyStatus == null ? '' : String(data.companyStatus).trim().toLowerCase();
+    var matchedName = data.matchedName ? String(data.matchedName) : '';
+    if (trading === 'actively trading') {
+      if (status && status !== 'active') return { kind: 'unavailable' };
+      return { kind: 'active', matchedName: matchedName, companyStatus: status || 'active' };
+    }
+    if (trading === 'not trading') {
+      if (status === 'active') return { kind: 'unavailable' };
+      return { kind: 'inactive', matchedName: matchedName, companyStatus: status };
+    }
+    return { kind: 'unavailable' };
+  }
+
   return {
     letterOf: letterOf,
     buildIndex: buildIndex,
     scoreName: scoreName,
-    searchCompanies: searchCompanies
+    searchCompanies: searchCompanies,
+    interpretCompanyStatus: interpretCompanyStatus
   };
 });
