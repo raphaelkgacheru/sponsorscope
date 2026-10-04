@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check a company | SponsorScope</title>
+<meta name="description" content="Check whether a UK employer is on the Home Office register of licensed sponsors, its A or B rating, and which visa routes it holds. No account needed.">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#00b87a;--green-light:#00c896;--blue:#0077ff;
+  --gradient:linear-gradient(135deg,#00c896,#0077ff);
+  --bg:#f8f9fc;--white:#fff;--surface:#f5f5f8;
+  --border:rgba(0,0,0,0.06);--text-primary:#111;--text-secondary:#444;
+  --text-muted:#888;--text-hint:#aaa;--green-bg:#e6faf3;--green-text:#00956a;
+  --amber-bg:#fff8e6;--amber-text:#b07800;--red-bg:#fff0f0;--red-text:#cc3333;
+  --font:"Nunito",system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text-primary);font-family:var(--font);font-size:16px;line-height:1.6;overflow-x:hidden;min-height:100vh;}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 4rem;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{width:34px;height:34px;border-radius:10px;object-fit:cover;}
+.nav-logo-name{font-size:17px;font-weight:900;color:var(--text-primary);}
+.nav-logo-name span{color:var(--green);}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:700;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text-primary);}
+.nav-links a.active{color:var(--green);}
+.nav-cta{background:var(--gradient)!important;color:white!important;padding:0.5rem 1.25rem;border-radius:10px;font-weight:800!important;font-size:13px!important;}
+.page-hero{background:white;border-bottom:1px solid var(--border);padding:3.5rem 4rem 2.5rem;}
+.page-hero-inner{max-width:760px;margin:0 auto;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--green-bg);border:1px solid rgba(0,185,120,0.2);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:800;color:var(--green-text);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.25rem;}
+.eyebrow-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);}}
+.page-hero h1{font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.03em;margin-bottom:0.75rem;}
+.hl{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-hero p{font-size:15px;color:var(--text-secondary);font-weight:500;max-width:560px;line-height:1.65;}
+.check-section{max-width:760px;margin:0 auto;padding:2rem 4rem 4rem;}
+.search-card{background:white;border:1px solid var(--border);border-radius:16px;padding:1.25rem;box-shadow:0 8px 32px rgba(0,0,0,0.04);}
+.search-form{display:flex;gap:12px;align-items:flex-end;}
+.search-field{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0;}
+.search-field label{font-size:11px;font-weight:800;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;}
+.search-input{width:100%;padding:12px 14px;border:1.5px solid #e8e8e8;border-radius:10px;font-family:var(--font);font-size:15px;font-weight:600;color:var(--text-primary);outline:none;transition:border-color 0.15s;background:var(--bg);}
+.search-input:focus{border-color:var(--green);background:white;}
+.search-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gradient);color:white;border:none;padding:12px 22px;border-radius:10px;font-family:var(--font);font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap;height:48px;box-shadow:0 4px 16px rgba(0,200,150,0.25);}
+.search-btn:hover{opacity:0.92;}
+.search-btn:disabled{opacity:0.6;cursor:not-allowed;}
+.search-btn svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5;}
+.hint{margin-top:0.85rem;font-size:12px;font-weight:700;color:var(--text-hint);}
+.results{margin-top:1.25rem;display:flex;flex-direction:column;gap:12px;}
+.result-card,.match-list,.state-box{background:white;border:1px solid var(--border);border-radius:16px;padding:1.5rem;}
+.state-box{text-align:center;padding:2.5rem 1.5rem;}
+.state-title{font-size:17px;font-weight:800;margin-bottom:6px;}
+.state-desc{font-size:14px;color:var(--text-muted);font-weight:600;line-height:1.6;max-width:460px;margin:0 auto;}
+.result-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.85rem;}
+.kicker{font-size:10px;font-weight:800;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+.result-name{font-size:1.35rem;font-weight:900;letter-spacing:-0.02em;line-height:1.2;}
+.result-loc{font-size:13px;font-weight:700;color:var(--text-muted);margin-top:4px;}
+.badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800;white-space:nowrap;}
+.badge-a{background:var(--green-bg);color:var(--green-text);border:1px solid rgba(0,185,120,0.2);}
+.badge-b{background:var(--amber-bg);color:var(--amber-text);border:1px solid rgba(240,184,0,0.3);}
+.badge-neutral{background:var(--surface);color:var(--text-secondary);border:1px solid var(--border);}
+.verdict{font-size:14px;font-weight:650;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;}
+.warn{background:var(--amber-bg);border:1px solid rgba(240,184,0,0.35);border-radius:12px;padding:12px 14px;font-size:13px;font-weight:700;color:var(--amber-text);line-height:1.55;margin-bottom:1rem;}
+.block-label{font-size:11px;font-weight:800;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;}
+.route-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1.15rem;}
+.route-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:var(--bg);border-radius:10px;padding:8px 10px;}
+.pill{padding:3px 9px;border-radius:20px;font-size:12px;font-weight:800;background:white;color:var(--text-secondary);border:1px solid rgba(0,0,0,0.06);}
+.rating-note{font-size:12px;font-weight:700;color:var(--text-muted);}
+.ch-box{background:var(--surface);border-radius:12px;padding:12px 14px;margin-bottom:1rem;}
+.ch-box p{font-size:13px;font-weight:650;color:var(--text-secondary);line-height:1.55;}
+.upsell{display:block;font-size:14px;font-weight:800;color:var(--green-text);text-decoration:none;line-height:1.5;}
+.upsell:hover{text-decoration:underline;}
+.updated{margin-top:0.85rem;font-size:11px;font-weight:700;color:var(--text-hint);}
+.disclaimer{margin-top:0.45rem;font-size:12px;font-weight:650;color:var(--text-muted);line-height:1.5;}
+.match-list h2{font-size:15px;font-weight:800;margin-bottom:4px;}
+.match-list .match-sub{font-size:13px;font-weight:650;color:var(--text-muted);margin-bottom:12px;}
+.match-btn{width:100%;text-align:left;background:var(--bg);border:1.5px solid transparent;border-radius:12px;padding:12px 14px;font-family:var(--font);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;}
+.match-btn:hover,.match-btn.selected{border-color:var(--green);background:white;}
+.match-name{font-size:14px;font-weight:800;color:var(--text-primary);}
+.match-meta{font-size:12px;font-weight:700;color:var(--text-muted);margin-top:2px;}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.35);border-top-color:white;border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+footer{padding:2.5rem 4rem;border-top:1px solid var(--border);background:white;display:flex;align-items:center;justify-content:space-between;margin-top:2rem;}
+.footer-left{font-size:13px;color:var(--text-muted);font-weight:700;}
+.footer-links{display:flex;gap:2rem;}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;font-weight:700;transition:color 0.2s;}
+.footer-links a:hover{color:var(--green);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:white;border-bottom:1px solid var(--border);padding:1.25rem 1.5rem;z-index:99;flex-direction:column;box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:var(--text-secondary);text-decoration:none;font-size:15px;font-weight:700;padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mobile-nav a:last-child{border-bottom:none;}
+.mobile-nav a:hover{color:var(--green);}
+.mobile-nav .nav-cta{background:var(--gradient)!important;color:white!important;padding:0.85rem 1.25rem!important;border-radius:10px;text-align:center;margin-top:0.5rem;border-bottom:none!important;}
+@media(max-width:960px){
+  .hamburger{display:flex;}
+  nav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .page-hero{padding:2.5rem 1.5rem 1.5rem;}
+  .check-section{padding:1.25rem 1.5rem 3rem;}
+  .search-form{flex-direction:column;align-items:stretch;}
+  .search-btn{width:100%;}
+  footer{padding:2rem 1.5rem;flex-direction:column;gap:1.25rem;text-align:center;}
+  .footer-links{flex-wrap:wrap;justify-content:center;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="data:image/png;base64,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" alt="SponsorScope">
+    <span class="nav-logo-name">Sponsor<span>Scope</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#features">Features</a></li>
+    <li><a href="/#how">How it works</a></li>
+    <li><a href="/jobs.html">Sponsor Jobs</a></li>
+    <li><a href="/check" class="active">Check a company</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+    <li><a href="/#pricing" class="nav-cta">Get started</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/#features" onclick="closeMobileNav()">Features</a>
+  <a href="/#how" onclick="closeMobileNav()">How it works</a>
+  <a href="/jobs.html">Sponsor Jobs</a>
+  <a href="/check">Check a company</a>
+  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="/#pricing" class="nav-cta" onclick="closeMobileNav()">Get started</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Free company check</div>
+    <h1>Can this employer <span class="hl">sponsor you?</span></h1>
+    <p>Type a company name. No account. SponsorScope checks it against the UK Home Office register of licensed sponsors and shows the rating and visa routes on file.</p>
+  </div>
+</div>
+
+<main class="check-section">
+  <div class="search-card">
+    <form class="search-form" id="check-form">
+      <div class="search-field">
+        <label for="company-name">Company name</label>
+        <input type="text" class="search-input" id="company-name" name="q" placeholder="e.g. Google (UK) Limited" autocomplete="organization" required minlength="2">
+      </div>
+      <button class="search-btn" id="check-btn" type="submit">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        Check company
+      </button>
+    </form>
+    <p class="hint">Uses the same Home Office register as the SponsorScope jobs board. Nothing here is a sample company.</p>
+  </div>
+  <div class="results" id="results" aria-live="polite"></div>
+</main>
+
+<footer>
+  <div class="footer-left">© 2026 SponsorScope. Built for UK visa job seekers.</div>
+  <div class="footer-links">
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="/check/search.js"></script>
+<script>
+const WORKER_URL = 'https://sponsorscope.raph3dkaranja.workers.dev';
+const PRICING_URL = '/#pricing';
+
+let companies = null;
+let registerUpdated = '';
+let loadPromise = null;
+let lastQuery = '';
+let lastResult = null;
+let lastMatches = [];
+
+const resultsEl = document.getElementById('results');
+const formEl = document.getElementById('check-form');
+const inputEl = document.getElementById('company-name');
+const buttonEl = document.getElementById('check-btn');
+
+function esc(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function formatUpdated(iso) {
+  if (!iso) return '';
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return '';
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function loadRegister() {
+  if (companies) return Promise.resolve(companies);
+  if (loadPromise) return loadPromise;
+  loadPromise = fetch(WORKER_URL + '/sponsors')
+    .then(function (res) {
+      if (!res.ok) throw new Error('Register request failed');
+      return res.json();
+    })
+    .then(function (data) {
+      const rows = data && data.sponsors;
+      if (!Array.isArray(rows) || !rows.length) throw new Error('Register was empty');
+      companies = SponsorCheck.buildIndex(rows);
+      registerUpdated = data.updated || '';
+      return companies;
+    })
+    .catch(function (err) {
+      loadPromise = null;
+      throw err;
+    });
+  return loadPromise;
+}
+
+function setBusy(busy) {
+  buttonEl.disabled = busy;
+  buttonEl.innerHTML = busy
+    ? '<span class="spinner"></span> Checking...'
+    : '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg> Check company';
+}
+
+function locationLine(company) {
+  return [company.town, company.county].filter(Boolean).join(', ');
+}
+
+function badgeFor(summary) {
+  if (summary === 'A') return '<span class="badge badge-a">A-rated</span>';
+  if (summary === 'B') return '<span class="badge badge-b">B-rated</span>';
+  if (summary === 'mixed') return '<span class="badge badge-b">B-rated on some routes</span>';
+  if (summary === 'provisional') return '<span class="badge badge-neutral">Provisional</span>';
+  return '<span class="badge badge-neutral">Rating on file</span>';
+}
+
+function verdictFor(company) {
+  if (company.summary === 'B') {
+    return 'This company is on the UK Home Office register of licensed sponsors, with a B rating.';
+  }
+  if (company.summary === 'mixed') {
+    return 'This company is on the UK Home Office register of licensed sponsors. At least one visa route is B-rated.';
+  }
+  if (company.summary === 'A') {
+    return 'This company is on the UK Home Office register of licensed sponsors with an A rating. A-rated sponsors can take on new sponsored workers.';
+  }
+  if (company.summary === 'provisional') {
+    return 'This company is on the UK Home Office register of licensed sponsors. The rating on file is provisional, not a standard A or B rating.';
+  }
+  return 'This company is on the UK Home Office register of licensed sponsors. The rating on file is shown with each visa route.';
+}
+
+function upsell() {
+  return '<a class="upsell" href="' + PRICING_URL + '">The Chrome extension does this automatically on every job listing.</a>';
+}
+
+function updatedLine() {
+  const label = formatUpdated(registerUpdated);
+  return label ? '<p class="updated">Home Office register data updated ' + esc(label) + '.</p>' : '';
+}
+
+function companiesHouseBlock() {
+  return '<div class="ch-box"><div class="block-label">Companies House</div><p>Not checked. This page only reads the Home Office sponsor register, so it cannot say whether Companies House shows the company as actively trading, dissolved, or dormant.</p></div>';
+}
+
+function renderDetail(company) {
+  const bRoutes = company.routes.filter(function (route) { return route.letter === 'B'; });
+  let warning = '';
+  if (company.summary === 'B' || company.summary === 'mixed') {
+    const which = bRoutes.map(function (route) { return route.name; }).join(', ');
+    warning = '<div class="warn">B-rated sponsors cannot take on new sponsored workers.' +
+      (which ? ' B-rated here: ' + esc(which) + '.' : '') + '</div>';
+  }
+  const routes = company.routes.map(function (route) {
+    return '<li><span class="pill">' + esc(route.name) + '</span><span class="rating-note">' + esc(route.rating || route.letter) + '</span></li>';
+  }).join('');
+  const loc = locationLine(company);
+  return '<article class="result-card">' +
+    '<div class="result-top"><div><div class="kicker">Home Office register</div>' +
+    '<h2 class="result-name">' + esc(company.name) + '</h2>' +
+    (loc ? '<p class="result-loc">' + esc(loc) + '</p>' : '') +
+    '</div>' + badgeFor(company.summary) + '</div>' +
+    '<p class="verdict">' + esc(verdictFor(company)) + '</p>' +
+    warning +
+    '<div class="block-label">Visa routes</div><ul class="route-list">' + (routes || '<li><span class="rating-note">No routes listed</span></li>') + '</ul>' +
+    companiesHouseBlock() +
+    upsell() +
+    '<p class="disclaimer">A licence on the register does not mean the employer will sponsor a particular role.</p>' +
+    updatedLine() +
+    '</article>';
+}
+
+function matchButton(hit, index) {
+  const company = hit.company;
+  const loc = locationLine(company);
+  const routeLabel = company.routes.length + (company.routes.length === 1 ? ' route' : ' routes');
+  return '<button type="button" class="match-btn" data-index="' + index + '">' +
+    '<span><span class="match-name">' + esc(company.name) + '</span>' +
+    '<span class="match-meta">' + esc([loc, routeLabel].filter(Boolean).join(' · ')) + '</span></span>' +
+    badgeFor(company.summary) +
+    '</button>';
+}
+
+function renderMatches(query, result) {
+  const buttons = result.matches.map(matchButton).join('');
+  const more = result.total > result.matches.length
+    ? '<p class="match-sub">Showing the closest ' + result.matches.length + ' of ' + result.total + '. Add more of the legal name to narrow it.</p>'
+    : '<p class="match-sub">Select the company whose licence you want to read.</p>';
+  return '<div class="match-list"><h2>' + result.total + ' licensed sponsors match “' + esc(query) + '”</h2>' + more + buttons + upsell() + '</div>';
+}
+
+function renderOtherNames(matches) {
+  if (!matches.length) return '';
+  return '<div class="match-list"><h2>Other names on the register</h2>' +
+    '<p class="match-sub">These also match your search. Open one if it is the employer you meant.</p>' +
+    matches.map(matchButton).join('') + '</div>';
+}
+
+function showNotFound(query) {
+  resultsEl.innerHTML = '<div class="state-box"><div class="state-title">' + esc(query) + ' is not on the register</div>' +
+    '<p class="state-desc">No licensed sponsor name matches this search. Check the spelling, or try the legal name on the job listing.</p></div>' +
+    '<div class="result-card">' + upsell() + updatedLine() + '</div>';
+}
+
+function showError() {
+  resultsEl.innerHTML = '<div class="state-box"><div class="state-title">The register could not be loaded</div>' +
+    '<p class="state-desc">SponsorScope could not reach the Home Office register feed. Check your connection and try again. No result has been guessed.</p></div>';
+}
+
+function updateUrl(query, companyName) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('q', query);
+  if (companyName) url.searchParams.set('company', companyName);
+  else url.searchParams.delete('company');
+  history.replaceState(null, '', url.pathname + url.search);
+}
+
+function showFeatured(hit) {
+  const others = lastResult.matches.filter(function (other) {
+    return other.company.name !== hit.company.name;
+  });
+  lastMatches = others;
+  resultsEl.innerHTML = renderDetail(hit.company) + renderOtherNames(others);
+  updateUrl(lastQuery, hit.company.name);
+}
+
+function choose(index) {
+  const hit = lastMatches[index];
+  if (!hit) return;
+  showFeatured(hit);
+}
+
+function present(query, result, preferredName) {
+  lastQuery = query;
+  lastResult = result;
+  if (!result.total) {
+    lastMatches = [];
+    showNotFound(query);
+    updateUrl(query, '');
+    return;
+  }
+  const preferred = preferredName
+    ? result.matches.find(function (hit) { return hit.company.name.toLowerCase() === preferredName.toLowerCase(); })
+    : null;
+  const topScore = result.matches[0].score;
+  const topGroup = result.matches.filter(function (hit) { return hit.score === topScore; });
+  if (preferred || topGroup.length === 1) {
+    showFeatured(preferred || topGroup[0]);
+    return;
+  }
+  lastMatches = result.matches;
+  resultsEl.innerHTML = renderMatches(query, result);
+  updateUrl(query, '');
+}
+
+async function runSearch(query, preferredName) {
+  const cleaned = query.trim();
+  if (cleaned.length < 2) {
+    inputEl.focus();
+    return;
+  }
+  setBusy(true);
+  resultsEl.innerHTML = '<div class="state-box"><div class="state-title">Checking the Home Office register</div><p class="state-desc">Loading licensed sponsors. This uses the live register, not sample companies.</p></div>';
+  try {
+    await loadRegister();
+    const result = SponsorCheck.searchCompanies(companies, cleaned, 8);
+    present(cleaned, result, preferredName);
+  } catch (err) {
+    showError();
+  } finally {
+    setBusy(false);
+  }
+}
+
+formEl.addEventListener('submit', function (event) {
+  event.preventDefault();
+  runSearch(inputEl.value, '');
+});
+
+resultsEl.addEventListener('click', function (event) {
+  const btn = event.target.closest('.match-btn');
+  if (!btn) return;
+  choose(Number(btn.dataset.index));
+});
+
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', function () {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+function closeMobileNav() {
+  hamburger.classList.remove('open');
+  mobileNav.classList.remove('open');
+}
+document.addEventListener('click', function (event) {
+  if (!hamburger.contains(event.target) && !mobileNav.contains(event.target)) closeMobileNav();
+});
+
+const params = new URLSearchParams(window.location.search);
+const initialQuery = params.get('q') || '';
+const initialCompany = params.get('company') || '';
+if (initialQuery) {
+  inputEl.value = initialQuery;
+  runSearch(initialQuery, initialCompany);
+} else {
+  loadRegister().catch(function () {});
+}
+</script>
+</body>
+</html>
